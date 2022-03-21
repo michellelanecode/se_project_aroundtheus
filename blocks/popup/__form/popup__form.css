@@ -1,6 +1,7 @@
 .popup__form {
 		background-color: white;
 	padding-left: 37px;
+	border-radius: 10px;
 }
 
 .popup__form input {

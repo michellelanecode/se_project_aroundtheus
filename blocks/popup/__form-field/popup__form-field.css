@@ -3,3 +3,7 @@ border: none;
 border-bottom: 1px solid grey;
 color: black;
 }
+
+ #first, #last{
+	padding-bottom: 13px;
+}

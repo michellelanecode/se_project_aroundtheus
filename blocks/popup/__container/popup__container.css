@@ -4,4 +4,5 @@
 	background: white;
 	display: flex;
 	justify-content: center;
+	border-radius: 10px;
 }

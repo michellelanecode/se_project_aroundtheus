@@ -1,4 +1,9 @@
 .popup__container {
+ position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -215px;
+	margin-left: -165px;
 	width: 430px;
 	height: 330px;
 	background: white;

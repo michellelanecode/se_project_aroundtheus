@@ -1,9 +1,11 @@
-.profile__buttons_add {
-	margin: 75px auto 85px 165px;
+.profile__buttons-add {
 	width: 150px;
 	height: 50px;
 	background-image: url('../../../../images/addButton.png');
 	background-color: black;
 	background-position: center;
 	background-repeat: no-repeat;
+	grid-area: add;
 }
+
+

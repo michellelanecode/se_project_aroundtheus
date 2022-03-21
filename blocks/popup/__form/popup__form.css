@@ -11,3 +11,9 @@
 	line-height: 17px;
 	color:black;
 }
+
+.popup__form input[type='submit'] {
+		color: white;
+	font-size: 18px;
+	line-height: 22px;
+}

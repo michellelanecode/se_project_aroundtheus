@@ -1,0 +1,7 @@
+.popup__form {
+		background-color: white;
+		position: absolute;
+		width: 358px;
+		height: 258px;
+		border: 1px solid red;
+}

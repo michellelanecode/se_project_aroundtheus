@@ -1,7 +1,12 @@
 .popup__form {
 		background-color: white;
-		position: absolute;
-		width: 358px;
-		height: 258px;
-		border: 1px solid red;
+	padding-left: 37px;
+}
+
+.popup__form input {
+	width: 358px;
+	margin-bottom: 37px;
+	font-size:14px;
+	line-height: 17px;
+	color:black;
 }

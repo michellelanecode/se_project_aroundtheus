@@ -6,8 +6,7 @@ var aboutMe = document.querySelector(".profile__subtitle");
 var modalWindow = document.querySelector(".popup__form");
 var first = document.getElementById("first");
 var last = document.getElementById("last");
-var loveButton = document.querySelector(".card__lovebutton");
-
+var loveButton = document.querySelectorAll(".card__lovebutton");
 editButton.addEventListener("click", function (event) {
   event.preventDefault();
   popup.style.display = "block";
@@ -25,9 +24,21 @@ modalWindow.addEventListener("submit", function (event) {
   popup.style.display = "none";
 });
 
-loveButton.addEventListener("click", function (event) {
-  if (loveButton.className === "card__lovebutton_active") {
-    loveButton.className = "card__lovebutton";
-  }
-  loveButton.className = "card__lovebutton_active";
-});
+  loveButton.forEach(function (node) {
+    node.addEventListener('click', function (event){
+        if (node.className === "card__lovebutton"){
+            node.className = "card__lovebutton_active";
+        } else {
+            node.className = "card__lovebutton"
+        }
+    })
+
+})
+
+// loveButton.addEventListener("click", function (event) {
+
+//   if (loveButton.className === "card__lovebutton_active") {
+//     loveButton.className = "card__lovebutton";
+//   }
+//   loveButton.className = "card__lovebutton_active";
+// });

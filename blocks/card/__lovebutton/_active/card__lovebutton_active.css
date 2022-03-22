@@ -1,0 +1,8 @@
+.card__lovebutton_active {
+  background: url("../../../../images/icons8-heart-24.png");
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-repeat: none;
+  background-size: contain;
+}

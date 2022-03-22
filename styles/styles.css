@@ -28,3 +28,5 @@
 @import url(../blocks/popup/__form-close/popup__form-close.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__text/profile__text.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
+@import url(../blocks/card/__lovebutton/_active/card__lovebutton_active.css);

@@ -1,5 +1,13 @@
 .card__lovebutton {
-		width: 21px;
-		height: 19px;
-		margin-right: 15px;
+		width: 26px;
+		height: 20px;
+		background: url('../../../images/heartIcon.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		border: none;
 }
+.card__lovebutton:hover {
+	background: url('../../../images/hoverHeart.png');
+	background-repeat: no-repeat;
+}
+

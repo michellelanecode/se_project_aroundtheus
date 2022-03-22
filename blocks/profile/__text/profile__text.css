@@ -1,4 +1,13 @@
 .profile__text {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__text {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 282px;
+    text-align: center;
+  }
 }

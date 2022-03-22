@@ -1,4 +1,11 @@
 .profile__photo-container {
-	width: 168px;
-	height: 128px;
+  width: 168px;
+  height: 128px;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__photo-container {
+    margin-bottom: 26px;
+    text-align: center;
+  }
 }

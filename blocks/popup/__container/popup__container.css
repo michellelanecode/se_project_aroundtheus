@@ -1,13 +1,10 @@
 .popup__container {
- position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-top: -215px;
-	margin-left: -165px;
-	width: 430px;
-	height: 330px;
-	background: white;
+  position: fixed;
+	display: flex;
+	align-items: center;
+  height: 430px;
+  border-radius: 10px;
 	display: flex;
 	justify-content: center;
-	border-radius: 10px;
+	align-content: center;
 }

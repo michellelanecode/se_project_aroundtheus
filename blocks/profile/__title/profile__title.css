@@ -6,6 +6,9 @@
   background-color: #0000;
   margin: 0;
   margin-bottom: 16px;
+   text-overflow: ellipsis;
+  overflow: hidden;
+
 }
 
 @media screen and (max-width: 900px) {

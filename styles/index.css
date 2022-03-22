@@ -30,3 +30,4 @@
 @import url(../blocks/profile/__text/profile__text.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/card/__lovebutton/_active/card__lovebutton_active.css);
+@import url(../blocks/card/__lovebutton/_disabled/card__lovebutton_disabled.css);

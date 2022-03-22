@@ -5,7 +5,18 @@
 	background-color: black;
 	background-position: center;
 	background-repeat: no-repeat;
-	grid-area: add;
+	border: 1px solid white;
 }
 
+@media screen and (max-width: 975px) {
+	.profile__buttons-add {
+			margin-left: 95px;
+		}
+}
 
+@media screen and (max-width: 890px) {
+  .profile__buttons-add {
+    width: 282px;
+		margin: 0 auto;
+  }
+}

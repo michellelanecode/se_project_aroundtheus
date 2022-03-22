@@ -2,5 +2,13 @@
 max-width: 415px;
 font-size: 18px;
 line-height: 22px;
-grid-area: subtitle;
+margin: 0;
+}
+
+@media screen and (max-width: 890px) {
+  .profile__subtitle {
+    max-width: 282px;
+		margin: 0 auto;
+  }
+
 }

@@ -6,8 +6,10 @@
 	margin: 0 auto;
 }
 
-@media screen and (max-width: 895px) {
+@media screen and (max-width: 975px) {
 	.cards{
-			max-width: 495px;
+			max-width: 775px;
+			grid-template-columns: repeat(2, 282px);
+			justify-content: center;
 		}
 }

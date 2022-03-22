@@ -1,11 +1,8 @@
 .profile {
-	max-width: 880px;
-	margin: 0 auto;
-	display: grid;
-	justify-content: center;
-	gap: 0;
-	grid-template-columns: repeat(5, min-content);
-	grid-template-areas: "photo title edit add"
-	". subtitle . . ";
+  max-width: 880px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
 }
 

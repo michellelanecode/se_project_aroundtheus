@@ -4,6 +4,8 @@
   grid-template-columns: repeat(3, 282px);
   gap: 21px 17px;
   margin: 0 auto;
+  list-style-type: none;
+  padding: 0;
 }
 
 @media screen and (max-width: 975px) {

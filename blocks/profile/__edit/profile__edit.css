@@ -1,0 +1,16 @@
+.profile__edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 415px;
+  gap: 16px;
+}
+
+@media screen and (max-width: 975px) {
+  .profile__edit {
+    align-items: center;
+    justify-content: center;
+  }
+}

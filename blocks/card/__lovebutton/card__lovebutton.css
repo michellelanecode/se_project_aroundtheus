@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   border: none;
 }
+
 .card__lovebutton:hover {
-  background: url("../../../images/hoveredHeart.svg");
-  background-repeat: no-repeat;
+  opacity: .5;
 }

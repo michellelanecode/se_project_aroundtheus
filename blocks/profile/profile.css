@@ -4,13 +4,23 @@
   align-items: center;
   margin: 0 auto;
   justify-content: space-between;
+  padding: 36px 0 46px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 975px) {
   .profile {
-    max-width: 282px;
-    display: grid;
+    max-width: 775px;
     margin: 36px auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .profile {
+    max-width: 100vw;
+    margin: 36px auto 0px;
     align-items: center;
     justify-content: center;
   }

@@ -22,3 +22,11 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+
+@media screen and (max-width: 320px) {
+  .popup__form {
+    width: 282px;
+    height: 322px;
+  }
+}

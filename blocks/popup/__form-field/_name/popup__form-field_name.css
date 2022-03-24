@@ -3,3 +3,10 @@
   border: none;
   border-bottom: 1px solid grey;
 }
+
+
+@media screen and (max-width: 320px) {
+  .popup__form-field_name {
+    width: 238px;
+  }
+}

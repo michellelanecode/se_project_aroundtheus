@@ -13,7 +13,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 475px) {
   .popup__form-button {
     width: 238px;
   }

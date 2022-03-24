@@ -9,8 +9,6 @@
   overflow: hidden;
 }
 
-
-
 @media screen and (max-width: 975px) {
   .profile__title {
     text-align: center;

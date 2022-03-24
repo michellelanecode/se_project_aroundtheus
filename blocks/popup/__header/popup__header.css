@@ -9,3 +9,8 @@
 	margin-left: 36px;
 }
 
+@media screen and (max-width: 475px) {
+  .popup__header{
+    margin-left: 22px;
+  }
+}

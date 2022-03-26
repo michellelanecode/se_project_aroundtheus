@@ -1,11 +1,12 @@
 .card__lovebutton {
   width: 21px;
   height: 19px;
+  background: url("../../../../images/heartButton.svg");
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
 }
 
 .card__lovebutton:hover {
-  opacity: .5;
+  opacity: 0.5;
 }

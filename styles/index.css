@@ -1,5 +1,6 @@
 @import url(../vendors/normalize.css);
 @import url(../vendors/fonts/fonts.css);
+@import url(../card-area/card-area.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__image/card__image.css);
@@ -16,9 +17,9 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form-button/popup__form-button.css);
 @import url(../blocks/popup/__form-close/popup__form-close.css);
+@import url(../blocks/popup/__form-field/popup__form-field.css);
 @import url(../blocks/popup/__form-field-about/popup__form-field-about.css);
 @import url(../blocks/popup/__form-field-name/popup__form-field-name.css);
-@import url(../blocks/popup/__form-field/popup__form-field.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/profile/profile.css);
@@ -29,3 +30,4 @@
 @import url(../blocks/profile/__photo/profile__photo.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__title/profile__title.css);
+

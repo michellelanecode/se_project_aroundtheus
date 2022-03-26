@@ -6,7 +6,7 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 0;
+  top: -45px;
   right: -45px;
   transition: ease 0.1s;
 }
@@ -18,7 +18,7 @@
 @media screen and (max-width: 525px) {
   .popup__form-close {
     right: 0;
-    top: -45px;
+    top: -60px;
   }
 }
 

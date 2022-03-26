@@ -9,7 +9,6 @@ const loveButtons = document.querySelectorAll(".card__lovebutton");
 const name = document.querySelector(".popup__form-field-name");
 const aboutInfo = document.querySelector(".popup__form-field-about");
 
-console.log();
 
 const popUp = function () {
   name.value = profileName.textContent;

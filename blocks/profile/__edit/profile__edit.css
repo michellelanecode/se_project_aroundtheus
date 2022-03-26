@@ -1,24 +1,18 @@
 .profile__edit {
-  display: flex;
+  display: grid;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   max-width: 415px;
-  gap: 16px;
+  gap: 16px 18px;
+  grid-template-areas:
+    "title edit"
+    "subtitle .";
 }
 
 @media screen and (max-width: 975px) {
   .profile__edit {
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 475px) {
-  .profile__edit {
-    flex-direction: column;
-    width: 282px;
-    text-align: center;
+        gap: 14px 10px;
   }
 }

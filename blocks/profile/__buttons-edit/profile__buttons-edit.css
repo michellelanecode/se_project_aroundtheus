@@ -7,10 +7,17 @@
   background-repeat: no-repeat;
   border: 2px solid white;
   transition: 0.1s;
+  align-self: center;
 }
 
 .profile__buttons-edit:hover {
   opacity: 0.5;
+}
+
+@media screen and (max-width: 475px) {
+  .profile__buttons-edit {
+    grid-area: edit;
+  }
 }
 
 @media screen and (max-width: 475px) {

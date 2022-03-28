@@ -5,6 +5,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
+  transition: ease .3s;
 }
 
 .card__lovebutton:hover {

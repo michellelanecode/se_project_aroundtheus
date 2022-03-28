@@ -6,8 +6,8 @@ const aboutMe = document.querySelector(".profile__subtitle");
 const saveButton = document.querySelector(".popup__form-button");
 const modalWindow = document.querySelector(".popup__form");
 const loveButtons = document.querySelectorAll(".card__lovebutton");
-const name = document.querySelector(".popup__form-field-name");
-const aboutInfo = document.querySelector(".popup__form-field-about");
+const name = document.querySelector(".popup__form-field_name");
+const aboutInfo = document.querySelector(".popup__form-field_about");
 
 
 const popUp = function () {

@@ -18,8 +18,8 @@
 @import url(../blocks/popup/__form-button/popup__form-button.css);
 @import url(../blocks/popup/__form-close/popup__form-close.css);
 @import url(../blocks/popup/__form-field/popup__form-field.css);
-@import url(../blocks/popup/__form-field-about/popup__form-field-about.css);
-@import url(../blocks/popup/__form-field-name/popup__form-field-name.css);
+@import url(../blocks/popup/__form-field/_about/popup__form-field_about.css);
+@import url(../blocks/popup/__form-field/_name/popup__form-field_name.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/profile/profile.css);
@@ -30,4 +30,3 @@
 @import url(../blocks/profile/__photo/profile__photo.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__title/profile__title.css);
-

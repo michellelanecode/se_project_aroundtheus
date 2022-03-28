@@ -8,7 +8,7 @@
   position: absolute;
   top: -45px;
   right: -45px;
-  transition: ease 0.1s;
+  transition: ease 0.3s;
 }
 
 .popup__form-close:hover {

@@ -1,6 +1,5 @@
 @import url(../vendors/normalize.css);
 @import url(../vendors/fonts/fonts.css);
-@import url(../card-area/card-area.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__image/card__image.css);
@@ -9,7 +8,6 @@
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/page/page.css);
@@ -18,8 +16,6 @@
 @import url(../blocks/popup/__form-button/popup__form-button.css);
 @import url(../blocks/popup/__form-close/popup__form-close.css);
 @import url(../blocks/popup/__form-field/popup__form-field.css);
-@import url(../blocks/popup/__form-field/_about/popup__form-field_about.css);
-@import url(../blocks/popup/__form-field/_name/popup__form-field_name.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/profile/profile.css);

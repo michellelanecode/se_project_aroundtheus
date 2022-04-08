@@ -53,7 +53,10 @@ const openPhoto = function () {
   imagePopup.style.display = 'block';
   photoPopup.src = this.src;
   popupDiv.style.visibility = "visible";
+}
 
+const deletePhoto = function () {
+  this.parentNode.remove();
 }
 
 const cardRender = function (card) {
@@ -62,6 +65,7 @@ const cardRender = function (card) {
   cardElement.querySelector('.card__caption').textContent = card.name;
   cardElement.querySelector('.card__lovebutton').addEventListener('click', loveButtonUpdate);
   cardElement.querySelector('.card__image').addEventListener('click', openPhoto);
+  cardElement.querySelector('.card__deletebutton').addEventListener('click', deletePhoto);
   cards.prepend(cardElement);
 };
 

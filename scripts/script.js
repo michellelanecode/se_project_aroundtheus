@@ -150,7 +150,9 @@ form.forEach(form => {
     } else {
       updateProfile(event)
     }
-  })
+
+  });
+})
 
 loveButtons.forEach(function (button) {
   button.addEventListener("click", loveButtonUpdate);

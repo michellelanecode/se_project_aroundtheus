@@ -52,9 +52,6 @@ const cardRender = function (card) {
 initialCards.forEach(card => {
   cardRender(card);
 })
-const loveButtons = document.querySelectorAll(".card__lovebutton");
-
-
 
 // popup functionality
 const popupDiv = document.querySelector('.popup');
@@ -63,10 +60,10 @@ const addPopup = document.querySelector('.popup__add');
 const form = document.querySelectorAll('.popup__form')
 const closeButton = document.querySelectorAll('.popup__form-close')
 
-//card image functionality
+//card image functionality for popups ...in progress
 const cardImage = document.querySelectorAll('.card__image');
 const imagePopup = document.querySelector('.popup__image');
-
+const loveButtons = document.querySelectorAll(".card__lovebutton");
 const openPhoto = function (event) {
   console.log(event.target)
   imagePopup.append(event.target);
@@ -101,6 +98,7 @@ const closePopup = function () {
 }
 
 const loveButtonUpdate = function () {
+  console.log(this)
   this.classList.toggle("card__lovebutton_active");
 };
 
@@ -122,6 +120,28 @@ const createCard = function (event) {
   document.querySelector('.popup__form_type_add').reset();
 }
 
+
+//event delegation
+
+// document.body.addEventListener('click', function (e){
+//   event.preventDefault();
+//   var element = e.target;
+//   var elementClass = e.target.classList;
+//   if (elementClass.contains('card__lovebutton')){
+//     element.loveButtonUpdate
+//   }
+//   if (elementClass.contains('popup__form-button')){
+//       if (element.textContent === "Create"){
+//         createCard(e);
+//       } else {
+//         updateProfile(e);
+//       }
+//   }
+// })
+
+
+//events
+
 form.forEach(form => {
   form.addEventListener('submit', function (event){
     event.preventDefault();
@@ -131,9 +151,6 @@ form.forEach(form => {
       updateProfile(event)
     }
   })
-
-})
-
 
 loveButtons.forEach(function (button) {
   button.addEventListener("click", loveButtonUpdate);

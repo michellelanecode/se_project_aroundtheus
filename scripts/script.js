@@ -65,6 +65,7 @@ const deletePhoto = function() {
 const cardRender = function(card) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.querySelector('.card__image').src = card.link;
+    cardElement.querySelector('.card__image').alt = card.name;
     cardElement.querySelector('.card__caption').textContent = card.name;
     cardElement.querySelector('.card__lovebutton').addEventListener('click', loveButtonUpdate);
     cardElement.querySelector('.card__image').addEventListener('click', openPhoto);

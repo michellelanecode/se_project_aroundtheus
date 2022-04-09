@@ -52,8 +52,10 @@ const openPhoto = function() {
     var title = this.parentNode.querySelector('.card__caption').textContent;
     document.querySelector('.popup__image-text').textContent = title;
     imagePopup.style.display = 'block';
+    imagePopup.style.animation = "fade-in .5s"
     photoPopup.src = this.src;
-    popupDiv.style.visibility = "visible";
+    popupDiv.style.visibility = "visible"
+    popupDiv.style.animation = "fade-in .5s";
 }
 
 const deletePhoto = function() {
@@ -89,22 +91,28 @@ const closeButton = document.querySelectorAll('.popup__form-close')
 const showEdit = function() {
     name.value = profileName.textContent;
     aboutInfo.value = aboutName.textContent;
-    popupDiv.style.visibility = "visible";
-    editPopup.style.opacity = 1;
-    popupDiv.style.opacity = 1;
+    popupDiv.style.visibility = "visible"
+    popupDiv.style.animation = "fade-in .5s";
+    editPopup.style.display = 'block';
+    editPopup.style.animation = "fade-in .5s"
 }
 
 const showAdd = function() {
     popupDiv.style.visibility = "visible";
     addPopup.style.display = 'block'
+    addPopup.style.animation = "fade-in .5s"
 }
 
 const closePopup = function() {
+    popupDiv.style.animation = "fade-out .5s";
     popupDiv.style.visibility = "hidden";
-
+    addPopup.style.animation = "fade-out .5s"
+    addPopup.style.display = "none"
+    editPopup.style.animation = "fade-out .5s"
+    editPopup.style.display = "none"
+    imagePopup.style.animation = "fade-out .5s"
+    imagePopup.style.display = "none"
 }
-
-
 
 const updateProfile = function(event) {
     event.preventDefault();

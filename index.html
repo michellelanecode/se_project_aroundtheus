@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
     <title>Around The US</title>
-  </head>
-  <body class="page">
+</head>
+
+<body class="page">
     <header class="header">
-      <img
-        class="header__logo"
-        src="images/Logo.svg"
-        alt="Large white text saying Around with smaller white text saying The U.S. connected on the top left corner of the larger word"
-      />
+        <img class="header__logo" src="images/Logo.svg" alt="Large white text saying Around with smaller white text saying The U.S. connected on the top left corner of the larger word" />
     </header>
     <main>
-      <section class="profile">
-        <div class="profile__info">
-          <img
-            class="profile__photo"
-            src="images/MichaelScott.png"
-            alt="picture of actor Steve Carrell as character Michael Scott"
-          />
-          <div class="profile__edit">
-            <h1 class="profile__title">Michael G. Scott</h1>
-            <button class="profile__buttons-edit" type="button"></button>
-            <p class="profile__subtitle">Screenwriter</p>
-          </div>
-        </div>
-        <button class="profile__buttons-add" type="button"></button>
-      </section>
-      <section class="card-area">
-        <ul class="cards">
-          <template id="card">
+        <section class="profile">
+            <div class="profile__info">
+                <img class="profile__photo" src="images/MichaelScott.png" alt="picture of actor Steve Carrell as character Michael Scott" />
+                <div class="profile__edit">
+                    <h1 class="profile__title">Michael G. Scott</h1>
+                    <button class="profile__buttons-edit" type="button"></button>
+                    <p class="profile__subtitle">Screenwriter</p>
+                </div>
+            </div>
+            <button class="profile__buttons-add" type="button"></button>
+        </section>
+        <section class="card-area">
+            <ul class="cards">
+                <template id="card">
           <li class="card">
             <button class="card__deletebutton" type="button"></button>
             <img
@@ -48,61 +42,46 @@
           </li>
         </template>
 
-        </ul>
-      </section>
+            </ul>
+        </section>
     </main>
     <footer class="footer">
-      <p class="footer__text">&copy; 2022 Around The U.S.</p>
+        <p class="footer__text">&copy; 2022 Around The U.S.</p>
     </footer>
-    <div class="popup">
-    <div class="popup__edit">
-      <div class="popup__container">
-        <form class="popup__form popup__form_type_edit">
-          <h3 class="popup__header">Edit Profile</h3>
-          <input
-            type="text"
-            placeholder=""
-            class="popup__form-field popup__form-field_type_name"
-          />
-          <input
-            type="text"
-            placeholder=""
-            class="popup__form-field popup__form-field_type_about"
-          />
-          <button class="popup__form-button" type="submit">Submit</button>
-        </form>
-        <button class="popup__form-close"></button>
-      </div>
+    <div class="popup fade">
+        <div class="popup__edit fade">
+            <div class="popup__container">
+                <form class="popup__form popup__form_type_edit">
+                    <h3 class="popup__header">Edit Profile</h3>
+                    <input type="text" placeholder="" class="popup__form-field popup__form-field_type_name" />
+                    <input type="text" placeholder="" class="popup__form-field popup__form-field_type_about" />
+                    <button class="popup__form-button" type="submit">Submit</button>
+                </form>
+                <button class="popup__form-close"></button>
+            </div>
 
-    </div>
-    <div class="popup__add">
-      <div class="popup__container">
-        <form class="popup__form popup__form_type_add">
-          <h3 class="popup__header">New Place</h3>
-          <input
-            type="text"
-            placeholder="Title"
-            class="popup__form-field popup__form-field_type_title"
-          />
-          <input
-            type="text"
-            placeholder="Image Link"
-            class="popup__form-field popup__form-field_type_link"
-          />
-          <button class="popup__form-button" type="submit">Create</button>
-        </form>
-        <button class="popup__form-close"></button>
-      </div>
-    </div>
+        </div>
+        <div class="popup__add fade">
+            <div class="popup__container">
+                <form class="popup__form popup__form_type_add">
+                    <h3 class="popup__header">New Place</h3>
+                    <input type="text" placeholder="Title" class="popup__form-field popup__form-field_type_title" />
+                    <input type="text" placeholder="Image Link" class="popup__form-field popup__form-field_type_link" />
+                    <button class="popup__form-button" type="submit">Create</button>
+                </form>
+                <button class="popup__form-close"></button>
+            </div>
+        </div>
 
-    <div class="popup__image">
-      <img class="popup__image-photo" />
-      <p class="popup__image-text"></p>
-      <button class="popup__form-close"></button>
+        <div class="popup__image fade">
+            <img class="popup__image-photo" />
+            <p class="popup__image-text"></p>
+            <button class="popup__form-close"></button>
+        </div>
     </div>
-  </div>
 
 
     <script src="scripts/script.js"></script>
-  </body>
+</body>
+
 </html>

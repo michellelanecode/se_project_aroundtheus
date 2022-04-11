@@ -39,7 +39,6 @@ const initialCards = [{
 //card functionality
 
 const imagePopup = document.querySelector('.popup__image');
-const loveButtons = document.querySelectorAll(".card__lovebutton");
 const cardTemplate = document.querySelector('#card').content;
 const cards = document.querySelector('.cards');
 const photoPopup = document.querySelector('.popup__image-photo');
@@ -50,16 +49,14 @@ const updateLikeButton = function(button) {
 };
 
 const createPopup = function(photoInfo) {
-    let subtitle = document.querySelector('.popup__image-text');
-    subtitle.textContent = photoInfo.alt;
-    photoPopup.src = photoInfo.src;
+    const subtitle = document.querySelector('.popup__image-text');
+    subtitle.textContent = photoInfo.name;
+    photoPopup.src = photoInfo.link;
     openPopup(imagePopup);
 }
 
-
 const deletePhoto = function(element) {
-    console.log(element)
-    let elementToRemove = element.closest('.card')
+    const elementToRemove = element.closest('.card')
     elementToRemove.remove()
 }
 
@@ -76,7 +73,8 @@ const createCard = function({ name, link }) {
         updateLikeButton(event.target)
     });
     cardElement.querySelector('.card__image').addEventListener('click', function(event) {
-        createPopup(event.target)
+        const obj = { name: event.target.alt, link: event.target.src };
+        createPopup(obj)
     });
     cardElement.querySelector('.card__deletebutton').addEventListener('click', function(event) {
         deletePhoto(event.target);
@@ -95,8 +93,8 @@ const popupDiv = document.querySelector('.popup');
 const editPopup = document.querySelector('.popup__edit');
 const addPopup = document.querySelector('.popup__add');
 const closeButton = document.querySelectorAll('.popup__form-close')
-const profileSubmitButton = document.querySelector('.popup__form-button_type_submit');
-const cardCreateButton = document.querySelector('.popup__form-button_type_create');
+const profileSubmitForm = document.querySelector('.popup__form_type_edit');
+const cardCreateForm = document.querySelector('.popup__form_type_add');
 
 
 //create an element for the like button everytime a card renders
@@ -111,14 +109,13 @@ const showAdd = function() {
 }
 
 const closePopup = function(popupElement) {
-    console.log(popupElement)
-    popupDiv.classList.toggle('popup_active')
-    popupElement.classList.toggle('popup__container_active')
+    popupDiv.classList.remove('popup_active')
+    popupElement.classList.remove('popup__container_active')
 }
 
 const openPopup = function(popupElement) {
-    popupDiv.classList.toggle('popup_active')
-    popupElement.classList.toggle('popup__container_active')
+    popupDiv.classList.add('popup_active')
+    popupElement.classList.add('popup__container_active')
 }
 
 const updateProfile = function(event) {
@@ -136,13 +133,14 @@ const updateProfile = function(event) {
 //events
 
 //function for create button need event listener to call create card out of info
-profileSubmitButton.addEventListener('click', updateProfile);
+profileSubmitForm.addEventListener('submit', updateProfile);
 //function for submit button to update profile with info
-cardCreateButton.addEventListener('click', function(event) {
+cardCreateForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        let newCard = { name: imageTitle.value, link: imageUrl.value }
+        const newCard = { name: imageTitle.value, link: imageUrl.value }
         renderCard(createCard(newCard));
         closePopup(addPopup);
+        cardCreateForm.reset();
     })
     //event listener for edit button clicks to open edit profile modal
 editButton.addEventListener('click', showEdit)
@@ -151,7 +149,7 @@ addButton.addEventListener('click', showAdd);
 //event listener for each close button to close open popup
 closeButton.forEach((button) => {
     button.addEventListener('click', function(event) {
-        let eleToClose = event.target.closest('.popup > div');
+        const eleToClose = event.target.closest('.popup > div');
         closePopup(eleToClose);
     })
 })

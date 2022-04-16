@@ -3,10 +3,10 @@ const editButton = document.querySelector(".profile__buttons-edit");
 const addButton = document.querySelector('.profile__buttons-add');
 const profileName = document.querySelector(".profile__title");
 const aboutName = document.querySelector('.profile__subtitle');
-const aboutInfo = document.querySelector('.popup__form-field_type_about');
-const name = document.querySelector('.popup__form-field_type_name');
-const imageTitle = document.querySelector('.popup__form-field_type_title');
-const imageUrl = document.querySelector('.popup__form-field_type_link');
+const aboutInfo = document.querySelector('.popup__input_type_about');
+const name = document.querySelector('.popup__input_type_name');
+const imageTitle = document.querySelector('.popup__input_type_title');
+const imageUrl = document.querySelector('.popup__input_type_link');
 
 
 // card functionality

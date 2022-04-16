@@ -51,11 +51,13 @@
     <div class="popup">
         <div class="popup__edit">
             <div class="popup__container">
-                <form class="popup__form popup__form_type_edit">
+                <form class="popup__form popup__form_type_edit" name="editForm" novalidate>
                     <h3 class="popup__header">Edit Profile</h3>
-                    <input type="text" placeholder="" class="popup__form-field popup__form-field_type_name" />
-                    <input type="text" placeholder="" class="popup__form-field popup__form-field_type_about" />
-                    <button class="popup__form-button" type="submit">Submit</button>
+                    <input id="name-input" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required />
+                    <span class="popup__input-error name-input-error"></span>
+                    <input id="about-input" type="text" class="popup__input popup__input_type_about" minlength="2" maxlength="200" required />
+                    <span class="popup__input_type_error about-input-error"></span>
+                    <button class="popup__button" type="submit">Save</button>
                 </form>
                 <button class="popup__form-close"></button>
             </div>
@@ -63,11 +65,13 @@
         </div>
         <div class="popup__add">
             <div class="popup__container">
-                <form class="popup__form popup__form_type_add">
+                <form class="popup__form popup__form_type_add" name="addForm" novalidate>
                     <h3 class="popup__header">New Place</h3>
-                    <input type="text" placeholder="Title" class="popup__form-field popup__form-field_type_title" />
-                    <input type="text" placeholder="Image Link" class="popup__form-field popup__form-field_type_link" />
-                    <button class="popup__form-button" type="submit">Create</button>
+                    <input id="title-input" type="text" placeholder="Title" class="popup__input popup__input_type_title" minlength="1" maxlength="30" required/>
+                    <span class="popup__input-error title-input-error"></span>
+                    <input id="url-input" type="url" placeholder="Image URL" class="popup__input popup__input_type_link" required/>
+                    <span class="popup__input_type_error url-input-error"></span>
+                    <button class="popup__button" type="submit">Create</button>
                 </form>
                 <button class="popup__form-close"></button>
             </div>
@@ -80,7 +84,7 @@
         </div>
     </div>
 
-
+    <script src="scripts/validate.js"></script>
     <script src="scripts/index.js"></script>
 </body>
 

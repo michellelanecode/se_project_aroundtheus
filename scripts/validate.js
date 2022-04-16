@@ -69,7 +69,6 @@ function isValid(form, input, config) {
         showError(form, input, input.validationMessage, config);
     } else {
         hideError(form, input, config)
-
     }
 }
 

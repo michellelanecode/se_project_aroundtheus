@@ -53,10 +53,10 @@
             <div class="popup__container">
                 <form class="popup__form popup__form_type_edit" name="editForm" novalidate>
                     <h3 class="popup__header">Edit Profile</h3>
-                    <input id="name-input" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required />
-                    <span class="popup__input-error name-input-error"></span>
+                    <input id="name-input" type="text" class="popup__input popup__input_type_name " minlength="2" maxlength="40" required />
+                    <span class="popup__error name-input-error">Please add valid input</span>
                     <input id="about-input" type="text" class="popup__input popup__input_type_about" minlength="2" maxlength="200" required />
-                    <span class="popup__input_type_error about-input-error"></span>
+                    <span class="popup__error about-input-error">Please add valid input</span>
                     <button class="popup__button" type="submit">Save</button>
                 </form>
                 <button class="popup__form-close"></button>
@@ -68,10 +68,10 @@
                 <form class="popup__form popup__form_type_add" name="addForm" novalidate>
                     <h3 class="popup__header">New Place</h3>
                     <input id="title-input" type="text" placeholder="Title" class="popup__input popup__input_type_title" minlength="1" maxlength="30" required/>
-                    <span class="popup__input-error title-input-error"></span>
+                    <span class="popup__error title-input-error">Please add valid input</span>
                     <input id="url-input" type="url" placeholder="Image URL" class="popup__input popup__input_type_link" required/>
-                    <span class="popup__input_type_error url-input-error"></span>
-                    <button class="popup__button" type="submit">Create</button>
+                    <span class="popup__error url-input-error">Please add valid input</span>
+                    <button class="popup__button " type="submit">Create</button>
                 </form>
                 <button class="popup__form-close"></button>
             </div>
@@ -83,9 +83,8 @@
             <button class="popup__form-close"></button>
         </div>
     </div>
-
-    <script src="scripts/validate.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
 </body>
 
 </html>

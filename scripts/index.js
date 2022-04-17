@@ -95,7 +95,14 @@ const addPopup = document.querySelector('.popup__add');
 const closeButton = document.querySelectorAll('.popup__form-close')
 const profileSubmitForm = document.querySelector('.popup__form_type_edit');
 const cardCreateForm = document.querySelector('.popup__form_type_add');
-
+const validationObj = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible"
+};
 
 //create an element for the like button everytime a card renders
 const showEdit = function() {
@@ -114,6 +121,7 @@ const closePopup = function(popupElement) {
 }
 
 const openPopup = function(popupElement) {
+    enableValidation(validationObj);
     popupDiv.classList.add('popup_active')
     popupElement.classList.add('popup__container_active')
 }
@@ -126,11 +134,11 @@ const updateProfile = function(event) {
 };
 
 
-
-
-
-
 //events
+popupDiv.addEventListener('click', function(e) {
+    console.log(e.target.closest('.popup__form'))
+
+});
 
 //function for create button need event listener to call create card out of info
 profileSubmitForm.addEventListener('submit', updateProfile);

@@ -24,8 +24,7 @@ function isValid(form, input, config) {
 
 function isInputValid(inputs) {
     return inputs.some(input => {
-        console.log(input.validity.valid)
-        return input.validity.valid;
+        return !input.validity.valid;
     })
 }
 
@@ -39,9 +38,9 @@ function disableButton(button, buttonClass) {
 
 function toggleButton(inputs, button, inactiveButtonClass) {
     if (isInputValid(inputs)) {
-        disableButton(button, inactiveButtonClass)
-    } else {
         enableButton(button, inactiveButtonClass)
+    } else {
+        disableButton(button, inactiveButtonClass)
     }
 }
 

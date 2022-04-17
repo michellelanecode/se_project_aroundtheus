@@ -137,11 +137,7 @@ popupDiv.addEventListener('click', function(e) {
     }
 });
 
-popupDiv.addEventListener('keydown', function(e) {
-    if (e.key === "Escape") {
-        closeAllPopups()
-    }
-})
+
 profileSubmitForm.addEventListener('submit', updateProfile);
 
 cardCreateForm.addEventListener('submit', function(event) {

@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 475px) {
-    .popup__form-button {
-        max-width: 238px;
+    .popup__button {
+        min-width: 238px;
     }
 }

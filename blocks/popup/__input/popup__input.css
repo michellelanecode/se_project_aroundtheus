@@ -1,6 +1,6 @@
 .popup__input {
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid black;
     padding: 0;
     padding-bottom: 13px;
     align-self: center;
@@ -9,6 +9,10 @@
     color: black;
     min-width: 358px;
     margin-bottom: 5px;
+}
+
+.popup__input::placeholder {
+    opacity: 0.4;
 }
 
 @media screen and (max-width: 475px) {

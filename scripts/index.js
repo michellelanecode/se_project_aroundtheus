@@ -95,16 +95,7 @@ const addPopup = document.querySelector('.popup__add');
 const closeButton = document.querySelectorAll('.popup__form-close')
 const profileSubmitForm = document.querySelector('.popup__form_type_edit');
 const cardCreateForm = document.querySelector('.popup__form_type_add');
-const validationObj = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible"
-};
 
-//create an element for the like button everytime a card renders
 const showEdit = function() {
     name.value = profileName.textContent;
     aboutInfo.value = aboutName.textContent;
@@ -121,7 +112,6 @@ const closePopup = function(popupElement) {
 }
 
 const openPopup = function(popupElement) {
-    enableValidation(validationObj);
     popupDiv.classList.add('popup_active')
     popupElement.classList.add('popup__container_active')
 }
@@ -134,27 +124,38 @@ const updateProfile = function(event) {
 };
 
 
+const closeAllPopups = function() {
+    closePopup(imagePopup);
+    closePopup(editPopup);
+    closePopup(addPopup);
+}
+
 //events
 popupDiv.addEventListener('click', function(e) {
-    console.log(e.target.closest('.popup__form'))
-
+    if (e.target === e.currentTarget) {
+        closeAllPopups()
+    }
 });
 
-//function for create button need event listener to call create card out of info
+popupDiv.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        closeAllPopups()
+    }
+})
 profileSubmitForm.addEventListener('submit', updateProfile);
-//function for submit button to update profile with info
+
 cardCreateForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const newCard = { name: imageTitle.value, link: imageUrl.value }
-        renderCard(createCard(newCard));
-        closePopup(addPopup);
-        cardCreateForm.reset();
-    })
-    //event listener for edit button clicks to open edit profile modal
+    event.preventDefault();
+    const newCard = { name: imageTitle.value, link: imageUrl.value }
+    renderCard(createCard(newCard));
+    closePopup(addPopup);
+    cardCreateForm.reset();
+})
+
 editButton.addEventListener('click', showEdit)
-    //event listener for add button click to open add card modal
+
 addButton.addEventListener('click', showAdd);
-//event listener for each close button to close open popup
+
 closeButton.forEach((button) => {
     button.addEventListener('click', function(event) {
         const eleToClose = event.target.closest('.popup > div');

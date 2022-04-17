@@ -1,12 +1,4 @@
-//remaining tasks before first submission:
-//should be able to click on overlay and closePopup()
-//should be able to press ESC and closePopup()
-
-
-
-
 function showError(form, input, errormsg, config) {
-    console.log(form)
     const { inputErrorClass, errorClass } = config;
     const errorEl = document.querySelector(`.${input.id}-error`);
     input.classList.add(inputErrorClass)
@@ -32,7 +24,8 @@ function isValid(form, input, config) {
 
 function isInputValid(inputs) {
     return inputs.some(input => {
-        return !input.validity.valid;
+        console.log(input.validity.valid)
+        return input.validity.valid;
     })
 }
 
@@ -46,9 +39,9 @@ function disableButton(button, buttonClass) {
 
 function toggleButton(inputs, button, inactiveButtonClass) {
     if (isInputValid(inputs)) {
-        enableButton(button, inactiveButtonClass)
-    } else {
         disableButton(button, inactiveButtonClass)
+    } else {
+        enableButton(button, inactiveButtonClass)
     }
 }
 
@@ -75,3 +68,12 @@ function enableValidation(config) {
         setEventListeners(form, config);
     });
 };
+
+enableValidation({
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible"
+});

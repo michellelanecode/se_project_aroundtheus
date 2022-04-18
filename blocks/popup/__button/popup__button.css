@@ -9,6 +9,7 @@
     transition: ease-in 0.3s;
     color: white;
     align-self: center;
+    cursor: pointer;
 }
 
 .popup__button:hover {

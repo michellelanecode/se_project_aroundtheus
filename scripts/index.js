@@ -42,16 +42,16 @@ const imagePopup = document.querySelector('.popup__image');
 const cardTemplate = document.querySelector('#card').content;
 const cards = document.querySelector('.cards');
 const photoPopup = document.querySelector('.popup__image-photo');
-
+const subtitle = document.querySelector('.popup__image-text');
 
 const updateLikeButton = function(button) {
     button.classList.toggle("card__lovebutton_active");
 };
 
-const createPopup = function(photoInfo) {
-    const subtitle = document.querySelector('.popup__image-text');
+const openImagePopup = function(photoInfo) {
     subtitle.textContent = photoInfo.name;
     photoPopup.src = photoInfo.link;
+    photoPopup.alt = photoInfo.name;
     openPopup(imagePopup);
 }
 
@@ -66,15 +66,16 @@ const renderCard = function(cardElement) {
 
 const createCard = function({ name, link }) {
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    cardElement.querySelector('.card__image').src = link;
-    cardElement.querySelector('.card__image').alt = name;
+    const cardImage = cardElement.querySelector('.card__image');
+    cardImage.src = link;
+    cardImage.alt = name;
     cardElement.querySelector('.card__caption').textContent = name;
     cardElement.querySelector('.card__lovebutton').addEventListener('click', function(event) {
         updateLikeButton(event.target)
     });
-    cardElement.querySelector('.card__image').addEventListener('click', function(event) {
+    cardImage.addEventListener('click', function(event) {
         const obj = { name: event.target.alt, link: event.target.src };
-        createPopup(obj)
+        openImagePopup(obj)
     });
     cardElement.querySelector('.card__deletebutton').addEventListener('click', function(event) {
         deletePhoto(event.target);
@@ -89,7 +90,7 @@ initialCards.forEach(cardObj => {
 
 
 // popup functionality
-const popupDiv = document.querySelector('.popup');
+const popup = document.querySelector('.popup');
 const editPopup = document.querySelector('.popup__edit');
 const addPopup = document.querySelector('.popup__add');
 const closeButton = document.querySelectorAll('.popup__form-close')
@@ -104,22 +105,28 @@ const showEdit = function() {
 
 const showAdd = function() {
     openPopup(addPopup)
+    const button = addPopup.querySelector(".popup__button")
+    disableButton(button, "popup__button_disabled")
 }
 
 const closePopup = function(popupElement) {
-    popupDiv.classList.remove('popup_active')
+    popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')
 }
 
 const openPopup = function(popupElement) {
-    popupDiv.classList.add('popup_active')
+    popup.classList.add('popup_active')
     popupElement.classList.add('popup__container_active')
+}
+
+const fillProfileForm = function() {
+    profileName.textContent = name.value;
+    aboutName.textContent = aboutInfo.value;
 }
 
 const updateProfile = function(event) {
     event.preventDefault();
-    profileName.textContent = name.value;
-    aboutName.textContent = aboutInfo.value;
+    fillProfileForm();
     closePopup(editPopup);
 };
 
@@ -131,7 +138,7 @@ const closeAllPopups = function() {
 }
 
 //events
-popupDiv.addEventListener('click', function(e) {
+popup.addEventListener('click', function(e) {
     if (e.target === e.currentTarget) {
         closeAllPopups()
     }

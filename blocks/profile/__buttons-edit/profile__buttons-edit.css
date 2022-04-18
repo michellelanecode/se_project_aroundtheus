@@ -1,28 +1,29 @@
 .profile__buttons-edit {
-  width: 24px;
-  height: 24px;
-  background-color: black;
-  background-image: url("../../../images/EditButton.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 2px solid white;
-  transition: 0.1s;
-  align-self: center;
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    background-image: url("../../../images/EditButton.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid white;
+    transition: 0.1s;
+    align-self: center;
+    cursor: pointer;
 }
 
 .profile__buttons-edit:hover {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 @media screen and (max-width: 475px) {
-  .profile__buttons-edit {
-    grid-area: edit;
-  }
+    .profile__buttons-edit {
+        grid-area: edit;
+    }
 }
 
 @media screen and (max-width: 475px) {
-  .profile__buttons-edit {
-    width: 18px;
-    height: 18px;
-  }
+    .profile__buttons-edit {
+        width: 18px;
+        height: 18px;
+    }
 }

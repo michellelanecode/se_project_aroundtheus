@@ -1,4 +1,5 @@
 .popup__image {
     display: none;
     position: relative;
+    cursor: pointer
 }

@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     border: none;
     transition: ease .3s;
-    pointer: cursor;
+    cursor: pointer;
 }
 
 .card__deletebutton:hover {

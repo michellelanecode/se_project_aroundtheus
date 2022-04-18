@@ -1,5 +1,3 @@
-import { disableButton } from "./validate.js"
-
 // profile content
 const editButton = document.querySelector(".profile__buttons-edit");
 const addButton = document.querySelector('.profile__buttons-add');
@@ -98,7 +96,8 @@ const addPopup = document.querySelector('.popup__add');
 const closeButton = document.querySelectorAll('.popup__form-close')
 const profileSubmitForm = document.querySelector('.popup__form_type_edit');
 const cardCreateForm = document.querySelector('.popup__form_type_add');
-
+const addPopupSubmitButton = addPopup.querySelector(".popup__button");
+const disableButtonClass = "popup__button_disabled"
 const showEdit = function() {
     name.value = profileName.textContent;
     aboutInfo.value = aboutName.textContent;
@@ -107,18 +106,19 @@ const showEdit = function() {
 
 const showAdd = function() {
     openPopup(addPopup)
-    const button = addPopup.querySelector(".popup__button")
-    disableButton(button, "popup__button_disabled")
+    disableSubmitButton(addPopupSubmitButton, disableButtonClass);
 }
 
 const closePopup = function(popupElement) {
     popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')
+    document.removeEventListener("keydown", closePopupWithEscape)
 }
 
 const openPopup = function(popupElement) {
     popup.classList.add('popup_active')
     popupElement.classList.add('popup__container_active')
+    document.addEventListener("keydown", closePopupWithEscape)
 }
 
 const fillProfileForm = function() {
@@ -133,16 +133,21 @@ const updateProfile = function(event) {
 };
 
 
-const closeAllPopups = function() {
-    closePopup(imagePopup);
-    closePopup(editPopup);
-    closePopup(addPopup);
+const closeOpenedPopup = function() {
+    const openedPopup = document.querySelector('.popup__container_active')
+    closePopup(openedPopup);
+}
+
+const closePopupWithEscape = function(event) {
+    if (event.key === "Escape") {
+        closeOpenedPopup();
+    }
 }
 
 //events
-popup.addEventListener('click', function(e) {
-    if (e.target === e.currentTarget) {
-        closeAllPopups()
+popup.addEventListener('mousedown', function(event) {
+    if (event.target === event.currentTarget) {
+        closeOpenedPopup()
     }
 });
 
@@ -163,7 +168,6 @@ addButton.addEventListener('click', showAdd);
 
 closeButton.forEach((button) => {
     button.addEventListener('click', function(event) {
-        const eleToClose = event.target.closest('.popup > div');
-        closePopup(eleToClose);
+        closeOpenedPopup();
     })
 })

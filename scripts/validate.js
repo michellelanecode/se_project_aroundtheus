@@ -32,7 +32,7 @@ function enableButton(button, buttonClass) {
     button.classList.add(buttonClass);
 }
 
-function disableButton(button, buttonClass) {
+export function disableButton(button, buttonClass) {
     button.classList.remove(buttonClass)
 }
 

@@ -1,3 +1,5 @@
+import { disableButton } from "./validate.js"
+
 // profile content
 const editButton = document.querySelector(".profile__buttons-edit");
 const addButton = document.querySelector('.profile__buttons-add');

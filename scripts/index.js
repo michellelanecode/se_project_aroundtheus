@@ -42,14 +42,14 @@ const imagePopup = document.querySelector('.popup__image');
 const cardTemplate = document.querySelector('#card').content;
 const cards = document.querySelector('.cards');
 const photoPopup = document.querySelector('.popup__image-photo');
-const subtitle = document.querySelector('.popup__image-text');
+const photoTitle = document.querySelector('.popup__image-text');
 
 const updateLikeButton = function(button) {
     button.classList.toggle("card__lovebutton_active");
 };
 
 const openImagePopup = function(photoInfo) {
-    subtitle.textContent = photoInfo.name;
+    photoTitle.textContent = photoInfo.name;
     photoPopup.src = photoInfo.link;
     photoPopup.alt = photoInfo.name;
     openPopup(imagePopup);

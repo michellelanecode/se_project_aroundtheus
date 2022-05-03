@@ -1,5 +1,3 @@
-import * as utils from "./utils.js"
-
 export class Card {
     constructor(data, cardSelector) {
         this._text = data.text;
@@ -49,13 +47,3 @@ export class Card {
     }
 
 }
-
-
-
-
-// initialCards.forEach(cardObj => {
-//     //create new card,
-//     // render new card,
-//     var card = new Card(cardObj, cardSelector);
-
-// })

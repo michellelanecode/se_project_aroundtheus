@@ -1,6 +1,3 @@
-import { Card } from "./Card.js"
-import { FormValidator } from "./FormValidator.js"
-
 const popup = document.querySelector('.popup');
 const profileSubmitForm = document.querySelector('.popup__form_type_edit');
 const cardCreateForm = document.querySelector('.popup__form_type_add');

@@ -1,5 +1,5 @@
 import { FormValidator } from "./FormValidator.js";
-
+import { Card } from "./Card.js"
 // profile content
 const editButton = document.querySelector(".profile__buttons-edit");
 const addButton = document.querySelector('.profile__buttons-add');
@@ -9,6 +9,8 @@ const aboutInfo = document.querySelector('.popup__input_type_about');
 const name = document.querySelector('.popup__input_type_name');
 const imageTitle = document.querySelector('.popup__input_type_title');
 const imageUrl = document.querySelector('.popup__input_type_link');
+
+
 const settings = {
     formSelector: ".popup__form",
     inputSelector: ".popup__input",

@@ -1,3 +1,5 @@
+import { FormValidator } from "./FormValidator.js";
+
 // profile content
 const editButton = document.querySelector(".profile__buttons-edit");
 const addButton = document.querySelector('.profile__buttons-add');
@@ -7,6 +9,18 @@ const aboutInfo = document.querySelector('.popup__input_type_about');
 const name = document.querySelector('.popup__input_type_name');
 const imageTitle = document.querySelector('.popup__input_type_title');
 const imageUrl = document.querySelector('.popup__input_type_link');
+const settings = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible"
+}
+const editFormValidator = new FormValidator(settings, editForm);
+const addFormValidator = new FormValidator(settings, addForm);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 
 // card functionality

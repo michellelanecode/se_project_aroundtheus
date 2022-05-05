@@ -33,7 +33,7 @@
          errorEl.classList.add(this._errorClass)
      }
 
-     _hideError() {
+     _hideError(form, input) {
          const errorEl = document.querySelector(`.${input.id}-error`);
          input.classList.remove(this._inputErrorClass)
          errorEl.textContent = "";

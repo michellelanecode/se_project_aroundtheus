@@ -20,13 +20,21 @@ export class Card {
         this.classList.toggle("card__lovebutton_active");
     }
 
+    _openPopup(popupElement) {
+        console.log(popupElement)
+        const popup = document.querySelector('.popup');
+        const popupImage = document.querySelector('.popup__image-photo');
+        popup.classList.add('popup_active')
+        popupElement.classList.add('popup__container_active')
+    }
+
     _openImagePopup() {
         const photoPopup = document.querySelector('.popup__image-photo');
         const photoTitle = document.querySelector('.popup__image-text');
         photoTitle.textContent = this._text;
         photoPopup.src = this._link;
         photoPopup.alt = this._text;
-        openPopup(photoPopup)
+        this._openPopup(photoPopup)
     }
 
     _deletePhoto() {

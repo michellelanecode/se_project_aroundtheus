@@ -51,6 +51,12 @@ function showEdit() {
     openPopup(editPopup);
 }
 
+
+function disableSubmitButton(button, inactiveButtonClass) {
+    button.disabled = true;
+    button.classList.add(inactiveButtonClass)
+}
+
 function showAdd() {
     openPopup(addPopup)
     disableSubmitButton(addPopupSubmitButton, disableButtonClass);
@@ -90,4 +96,4 @@ closeButton.forEach((button) => {
     })
 })
 
-export { closePopup, openPopup, updateProfile, closeOpenedPopup, closePopupWithEscape, fillProfileForm, showAdd, showEdit }
+export { closePopup, openPopup, updateProfile, closeOpenedPopup, closePopupWithEscape, fillProfileForm, showAdd, showEdit, disableSubmitButton }

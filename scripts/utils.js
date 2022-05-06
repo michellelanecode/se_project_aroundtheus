@@ -85,7 +85,6 @@ profileSubmitForm.addEventListener('submit', updateProfile);
 
 cardCreateForm.addEventListener('submit', function(event) {
     event.preventDefault();
-
     const cardInfo = { text: imageTitle.value, link: imageUrl.value }
     let newCard = new Card(cardInfo, "#card")
     newCard = newCard.createCard()

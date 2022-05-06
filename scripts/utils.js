@@ -17,16 +17,16 @@ const addPopup = document.querySelector('.popup__add');
 const addPopupSubmitButton = addPopup.querySelector(".popup__button");
 const disableButtonClass = "popup__button_disabled"
 const cards = document.querySelector(".cards")
-
+const popupImage = document.querySelector('.popup__image');
 function closePopup(popupElement) {
     popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')
     document.removeEventListener("keydown", closePopupWithEscape)
 }
 
-function openPopup(popupElement) {
-    popup.classList.add('popup_active')
-    popupElement.classList.add('popup__container_active')
+function openPopup() {
+        popup.classList.add('popup_active')
+        popupImage.classList.add('popup__container_active')
     document.addEventListener("keydown", closePopupWithEscape)
 }
 
@@ -103,4 +103,4 @@ closeButton.forEach((button) => {
     })
 })
 
-export { closePopup, openPopup, updateProfile, closeOpenedPopup, closePopupWithEscape, fillProfileForm, showAdd, showEdit, disableSubmitButton }
+export { closePopup, openPopup, updateProfile, closeOpenedPopup, closePopupWithEscape, fillProfileForm, showAdd, showEdit, disableSubmitButton, renderCard }

@@ -19,11 +19,11 @@ export class Card {
         this.classList.toggle("card__lovebutton_active");
     }
 
-    _openPopup(popupElement) {
+    _openPopup() {
         const popup = document.querySelector('.popup');
-        const popupImage = document.querySelector('.popup__image-photo');
+        const popupImage = document.querySelector('.popup__image');
         popup.classList.add('popup_active')
-        popupElement.classList.add('popup__container_active')
+        popupImage.classList.add('popup__container_active')
     }
 
     _openImagePopup() {
@@ -32,7 +32,7 @@ export class Card {
         photoTitle.textContent = this._text;
         photoPopup.src = this._link;
         photoPopup.alt = this._text;
-        this._openPopup(photoPopup)
+        this._openPopup()
     }
 
     _deletePhoto() {

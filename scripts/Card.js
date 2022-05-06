@@ -12,7 +12,6 @@ export class Card {
     }
 
     _getCardTemplate() {
-        //this .cardSelector = #card
         return document.querySelector(this._cardSelector).content;
     }
 
@@ -21,7 +20,6 @@ export class Card {
     }
 
     _openPopup(popupElement) {
-        console.log(popupElement)
         const popup = document.querySelector('.popup');
         const popupImage = document.querySelector('.popup__image-photo');
         popup.classList.add('popup_active')

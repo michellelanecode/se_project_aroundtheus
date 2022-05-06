@@ -1,3 +1,5 @@
+import { Card } from "./Card.js"
+
 const popup = document.querySelector('.popup');
 const profileSubmitForm = document.querySelector('.popup__form_type_edit');
 const cardCreateForm = document.querySelector('.popup__form_type_add');
@@ -14,7 +16,7 @@ const editPopup = document.querySelector('.popup__edit');
 const addPopup = document.querySelector('.popup__add');
 const addPopupSubmitButton = addPopup.querySelector(".popup__button");
 const disableButtonClass = "popup__button_disabled"
-
+const cards = document.querySelector(".cards")
 
 function closePopup(popupElement) {
     popup.classList.remove('popup_active')
@@ -68,6 +70,9 @@ function fillProfileForm() {
     aboutName.textContent = aboutInfo.value;
 }
 
+function renderCard(cardElement) {
+    cards.prepend(cardElement);
+}
 
 popup.addEventListener('mousedown', function(event) {
     if (event.target === event.currentTarget) {
@@ -80,8 +85,11 @@ profileSubmitForm.addEventListener('submit', updateProfile);
 
 cardCreateForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    const newCard = { name: imageTitle.value, link: imageUrl.value }
-    renderCard(createCard(newCard));
+
+    const cardInfo = { text: imageTitle.value, link: imageUrl.value }
+    let newCard = new Card(cardInfo, "#card")
+    newCard = newCard.createCard()
+    renderCard(newCard);
     closePopup(addPopup);
     cardCreateForm.reset();
 })

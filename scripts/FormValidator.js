@@ -1,4 +1,4 @@
- export class FormValidator {
+export class FormValidator {
      constructor(settings, formElement) {
          this._form = formElement;
          this._inputSelector = settings.inputSelector;
@@ -7,12 +7,17 @@
          this._inputErrorClass = settings.inputErrorClass;
          this._errorClass = settings.errorClass;
         this._button = this._form.querySelector(this._submitButtonSelector)
+
      }
 
      enableValidation() {
+        if(this._form.classList.contains("popup__form_type_add")){
+            this._disableSubmitButton();
+        }
          this._form.addEventListener("submit", (evt) => {
              evt.preventDefault();
          });
+
          this._setEventListeners();
      }
 
@@ -25,13 +30,14 @@
              });
          });
      }
-
      _showError(input, errorMsg) {
          const errorEl = this._form.querySelector(`.${input.id}-error`);
          input.classList.add(this._inputErrorClass)
          errorEl.textContent = errorMsg;
          errorEl.classList.add(this._errorClass)
      }
+
+
 
      _hideError(input) {
          const errorEl = this._form.querySelector(`.${input.id}-error`);
@@ -48,7 +54,7 @@
          }
      }
 
-     _enableSubmitButton(button) {
+     _enableSubmitButton() {
          this._button.disabled = false;
          this._button.classList.remove(this._inactiveButtonClass)
      }

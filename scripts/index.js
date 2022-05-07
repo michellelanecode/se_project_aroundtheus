@@ -3,11 +3,6 @@ import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js"
 
 
-
-
-
-
-
 const profileName = document.querySelector(".profile__title");
 const aboutName = document.querySelector('.profile__subtitle');
 const aboutInfo = document.querySelector('.popup__input_type_about');
@@ -17,8 +12,6 @@ const addPopup = document.querySelector('.popup__add');
 const addPopupSubmitButton = addPopup.querySelector(".popup__button");
 const disableButtonClass = "popup__button_disabled"
 const cards = document.querySelector(".cards")
-
-
 
 
 const settings = {

@@ -14,5 +14,4 @@ function openPopup(popupElement) {
         document.addEventListener("keydown", closePopupWithEscape)
 }
 
-
 export {closePopup, openPopup}

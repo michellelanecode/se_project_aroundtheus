@@ -1,13 +1,6 @@
 import { Card } from "./Card.js"
-import {addPopup, createCard, renderCard, updateProfile, cardSelector, showEdit, showAdd, closePopupWithEscape} from "./index.js"
-const popup = document.querySelector('.popup');
-const profileSubmitForm = document.querySelector('.popup__form_type_edit');
-const cardCreateForm = document.querySelector('.popup__form_type_add');
-const editButton = document.querySelector(".profile__buttons-edit");
-const addButton = document.querySelector('.profile__buttons-add');
-const closeButtons = document.querySelectorAll('.popup__form-close')
-const imageTitle = document.querySelector('.popup__input_type_title');
-const imageUrl = document.querySelector('.popup__input_type_link');
+import * as constants from "./constants.js"
+
 function closePopup(popupElement) {
     popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')

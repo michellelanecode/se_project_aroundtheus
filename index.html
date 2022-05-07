@@ -1,92 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/index.css" />
     <title>Around The US</title>
-</head>
+  </head>
 
-<body class="page">
+  <body class="page">
     <header class="header">
-        <img class="header__logo" src="images/Logo.svg" alt="Large white text saying Around with smaller white text saying The U.S. connected on the top left corner of the larger word" />
+      <img
+        class="header__logo"
+        src="images/Logo.svg"
+        alt="Large white text saying Around with smaller white text saying The U.S. connected on the top left corner of the larger word"
+      />
     </header>
     <main>
-        <section class="profile">
-            <div class="profile__info">
-                <img class="profile__photo" src="images/MichaelScott.png" alt="picture of actor Steve Carrell as character Michael Scott" />
-                <div class="profile__edit">
-                    <h1 class="profile__title">Michael G. Scott</h1>
-                    <button class="profile__buttons-edit" type="button"></button>
-                    <p class="profile__subtitle">Screenwriter</p>
-                </div>
-            </div>
-            <button class="profile__buttons-add" type="button"></button>
-        </section>
-        <section class="card-area">
-            <ul class="cards">
-                <template id="card">
-          <li class="card">
-            <button class="card__deletebutton" type="button"></button>
-            <img
-              class="card__image"
-              src="#"
-              alt=""
-            />
-            <div class="card__text">
-              <h2 class="card__caption"></h2>
-              <button class="card__lovebutton" type="button"></button>
-            </div>
-          </li>
-        </template>
-
-            </ul>
-        </section>
+      <section class="profile">
+        <div class="profile__info">
+          <img
+            class="profile__photo"
+            src="images/MichaelScott.png"
+            alt="picture of actor Steve Carrell as character Michael Scott"
+          />
+          <div class="profile__edit">
+            <h1 class="profile__title">Michael G. Scott</h1>
+            <button class="profile__buttons-edit" type="button"></button>
+            <p class="profile__subtitle">Screenwriter</p>
+          </div>
+        </div>
+        <button class="profile__buttons-add" type="button"></button>
+      </section>
+      <section class="card-area">
+        <ul class="cards">
+          <template id="card">
+            <li class="card">
+              <button class="card__deletebutton" type="button"></button>
+              <img class="card__image" src="#" alt="" />
+              <div class="card__text">
+                <h2 class="card__caption"></h2>
+                <button class="card__lovebutton" type="button"></button>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
     </main>
     <footer class="footer">
-        <p class="footer__text">&copy; 2022 Around The U.S.</p>
+      <p class="footer__text">&copy; 2022 Around The U.S.</p>
     </footer>
     <div class="popup">
-        <div class="popup__edit">
-            <div class="popup__container">
-                <form class="popup__form popup__form_type_edit" name="editForm" novalidate>
-                    <h3 class="popup__header">Edit Profile</h3>
-                    <input id="name-input" type="text" class="popup__input popup__input_type_name " minlength="2" maxlength="40" required />
-                    <span class="popup__error name-input-error">Please add valid input</span>
-                    <input id="about-input" type="text" class="popup__input popup__input_type_about" minlength="2" maxlength="200" required />
-                    <span class="popup__error about-input-error">Please add valid input</span>
-                    <button class="popup__button" type="submit">Save</button>
-                </form>
-                <button class="popup__form-close"></button>
-            </div>
-
+      <div class="popup__edit">
+        <div class="popup__container">
+          <form
+            class="popup__form popup__form_type_edit"
+            name="editForm"
+            novalidate
+          >
+            <h3 class="popup__header">Edit Profile</h3>
+            <input
+              id="name-input"
+              type="text"
+              class="popup__input popup__input_type_name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="popup__error name-input-error"
+              >Please add valid input</span
+            >
+            <input
+              id="about-input"
+              type="text"
+              class="popup__input popup__input_type_about"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="popup__error about-input-error"
+              >Please add valid input</span
+            >
+            <button class="popup__button" type="submit">Save</button>
+          </form>
+          <button class="popup__form-close"></button>
         </div>
-        <div class="popup__add">
-            <div class="popup__container">
-                <form class="popup__form popup__form_type_add" name="addForm" novalidate>
-                    <h3 class="popup__header">New Place</h3>
-                    <input id="title-input" type="text" placeholder="Title" class="popup__input popup__input_type_title" minlength="1" maxlength="30" required/>
-                    <span class="popup__error title-input-error">Please add valid input</span>
-                    <input id="url-input" type="url" placeholder="Image URL" class="popup__input popup__input_type_link" required/>
-                    <span class="popup__error url-input-error">Please add valid input</span>
-                    <button class="popup__button" type="submit">Create</button>
-                </form>
-                <button class="popup__form-close"></button>
-            </div>
+      </div>
+      <div class="popup__add">
+        <div class="popup__container">
+          <form
+            class="popup__form popup__form_type_add"
+            name="addForm"
+            novalidate
+          >
+            <h3 class="popup__header">New Place</h3>
+            <input
+              id="title-input"
+              type="text"
+              placeholder="Title"
+              class="popup__input popup__input_type_title"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="popup__error title-input-error"
+              >Please add valid input</span
+            >
+            <input
+              id="url-input"
+              type="url"
+              placeholder="Image URL"
+              class="popup__input popup__input_type_link"
+              required
+            />
+            <span class="popup__error url-input-error"
+              >Please add valid input</span
+            >
+            <button class="popup__button" type="submit">Create</button>
+          </form>
+          <button class="popup__form-close"></button>
         </div>
-
-        <div class="popup__image">
-            <img class="popup__image-photo" />
-            <p class="popup__image-text"></p>
-            <button class="popup__form-close"></button>
-        </div>
+      </div>
+      <div class="popup__image">
+        <img class="popup__image-photo" />
+        <p class="popup__image-text"></p>
+        <button class="popup__form-close"></button>
+      </div>
     </div>
     <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/constants.js"></script>
     <script type="module" src="scripts/FormValidator.js"></script>
     <script type="module" src="scripts/Card.js"></script>
     <script type="module" src="scripts/utils.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,6 +1,7 @@
 import { Card } from "./Card.js"
 import * as constant from "./constants.js"
-import {closeOpenedPopup} from "./index.js"
+import {closeOpenedPopup, closePopupWithEscape} from "./index.js"
+
 function closePopup(popupElement) {
     constant.popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')
@@ -13,10 +14,5 @@ function openPopup(popupElement) {
         document.addEventListener("keydown", closePopupWithEscape)
 }
 
-function closePopupWithEscape(event) {
-  if (event.key === "Escape") {
-    closeOpenedPopup();
-  }
-}
 
-export {closePopup, openPopup, closePopupWithEscape}
+export {closePopup, openPopup}

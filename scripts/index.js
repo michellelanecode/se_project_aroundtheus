@@ -1,4 +1,4 @@
-import { openPopup, closePopup, closePopupWithEscape } from "./utils.js";
+import { openPopup, closePopup} from "./utils.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import * as constant from "./constants.js";
@@ -30,6 +30,12 @@ function updateProfile(event) {
 function fillProfileForm() {
   constant.profileName.textContent = constant.name.value;
   constant.aboutName.textContent = constant.aboutInfo.value;
+}
+
+function closePopupWithEscape(event) {
+  if (event.key === "Escape") {
+    closeOpenedPopup();
+  }
 }
 
 function closeOpenedPopup() {
@@ -79,4 +85,4 @@ constant.popup.addEventListener("mousedown", function (event) {
   }
 });
 
-export { closeOpenedPopup };
+export { closeOpenedPopup, closePopupWithEscape};

@@ -12,8 +12,6 @@ const profileName = document.querySelector(".profile__title");
 const aboutName = document.querySelector('.profile__subtitle');
 const aboutInfo = document.querySelector('.popup__input_type_about');
 const name = document.querySelector('.popup__input_type_name');
-const imageTitle = document.querySelector('.popup__input_type_title');
-const imageUrl = document.querySelector('.popup__input_type_link');
 const editPopup = document.querySelector('.popup__edit');
 const addPopup = document.querySelector('.popup__add');
 const addPopupSubmitButton = addPopup.querySelector(".popup__button");
@@ -104,4 +102,4 @@ function showAdd() {
     openPopup(addPopup)
 }
 
-export {cardSelector,  updateProfile,  closePopupWithEscape, fillProfileForm, showAdd, showEdit, renderCard }
+export {addPopup, createCard, cardSelector,  updateProfile,  closePopupWithEscape, fillProfileForm, showAdd, showEdit, renderCard }

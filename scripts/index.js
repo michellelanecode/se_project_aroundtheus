@@ -1,6 +1,27 @@
-import * as utils from "./utils.js"
+import {closeOpenedPopup, openPopup, closePopup} from "./utils.js"
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js"
+
+
+
+
+
+
+
+const profileName = document.querySelector(".profile__title");
+const aboutName = document.querySelector('.profile__subtitle');
+const aboutInfo = document.querySelector('.popup__input_type_about');
+const name = document.querySelector('.popup__input_type_name');
+const imageTitle = document.querySelector('.popup__input_type_title');
+const imageUrl = document.querySelector('.popup__input_type_link');
+const editPopup = document.querySelector('.popup__edit');
+const addPopup = document.querySelector('.popup__add');
+const addPopupSubmitButton = addPopup.querySelector(".popup__button");
+const disableButtonClass = "popup__button_disabled"
+const cards = document.querySelector(".cards")
+
+
+
 
 const settings = {
     formSelector: ".popup__form",
@@ -42,14 +63,46 @@ const initialCards = [{
 ];
 
 //render initial cards
-const cards = document.querySelector('.cards');
 const cardSelector = "#card"
-const renderCard = function(cardElement) {
+
+function renderCard(cardElement) {
     cards.prepend(cardElement);
 }
 
+ function createCard (data, selector){
+   const card =  new Card(data, selector);
+    return card.createCard()
+}
+
 initialCards.forEach(cardObj => {
-    const card = new Card(cardObj, cardSelector)
-    const cardElement = card.createCard();
-    renderCard(cardElement)
+    renderCard(createCard(cardObj, cardSelector))
 })
+
+function updateProfile(event) {
+    event.preventDefault();
+    fillProfileForm();
+    closePopup(editPopup);
+};
+
+function fillProfileForm() {
+    profileName.textContent = name.value;
+    aboutName.textContent = aboutInfo.value;
+}
+
+function closePopupWithEscape(event) {
+    if (event.key === "Escape") {
+        closeOpenedPopup();
+    }
+}
+
+function showEdit() {
+    name.value = profileName.textContent;
+    aboutInfo.value = aboutName.textContent;
+    openPopup(editPopup);
+}
+
+function showAdd() {
+    openPopup(addPopup)
+}
+
+export {cardSelector,  updateProfile,  closePopupWithEscape, fillProfileForm, showAdd, showEdit, renderCard }

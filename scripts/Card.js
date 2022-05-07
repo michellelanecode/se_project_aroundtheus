@@ -6,6 +6,7 @@ export class Card {
         this._cardSelector = cardSelector;
         this._photoPopup =  document.querySelector('.popup__image-photo');
         this._photoTitle = document.querySelector('.popup__image-text');
+        this._popupImage = document.querySelector('.popup__image');
         this._cardElement = this._getCardTemplate().cloneNode(true);
         this._likeButton = this._cardElement.querySelector('.card__lovebutton');
         this._deleteButton = this._cardElement.querySelector('.card__deletebutton');
@@ -32,6 +33,7 @@ export class Card {
         this._photoTitle.textContent = this._text;
         this._photoPopup.src = this._link;
        this._photoPopup.alt = this._text;
+        this._popupImage.classList.add('popup__container_active')
         openPopup(this._photoPopup)
     }
 

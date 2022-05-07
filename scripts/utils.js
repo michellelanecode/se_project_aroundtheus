@@ -13,7 +13,9 @@ function closePopup(popupElement) {
     popupElement.classList.remove('popup__container_active')
     document.removeEventListener("keydown", closePopupWithEscape)
 }
+
 function openPopup(popupElement) {
+
         popup.classList.add('popup_active')
         popupElement.classList.add('popup__container_active')
         document.addEventListener("keydown", closePopupWithEscape)

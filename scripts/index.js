@@ -88,10 +88,12 @@ function closePopupWithEscape(event) {
 function showEdit() {
     name.value = profileName.textContent;
     aboutInfo.value = aboutName.textContent;
+    editFormValidator.resetValidation()
     openPopup(editPopup);
 }
 
 function showAdd() {
+    addFormValidator.resetValidation()
     openPopup(addPopup)
 }
 

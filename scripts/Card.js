@@ -14,7 +14,6 @@ export class Card {
     }
 
     _setEventListeners() {
-        console.log(this._likeButton)
         this._likeButton.addEventListener("click", (evt) =>{this._updateLikeButton(evt)});
         this._deleteButton.addEventListener("click", this._deletePhoto);
         this._cardImage.addEventListener("click", () => { this._openImagePopup() });

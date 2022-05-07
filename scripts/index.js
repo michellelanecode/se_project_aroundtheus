@@ -62,7 +62,6 @@ const initialCards = [{
     }
 ];
 
-//render initial cards
 const cardSelector = "#card"
 
 function renderCard(cardElement) {

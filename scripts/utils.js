@@ -24,12 +24,6 @@ function closeOpenedPopup() {
 }
 
 
-
-// function disableSubmitButton(button, inactiveButtonClass) {
-//     button.disabled = true;
-//     button.classList.add(inactiveButtonClass)
-// }
-
 popup.addEventListener('mousedown', function(event) {
     if (event.target === event.currentTarget) {
         closeOpenedPopup()

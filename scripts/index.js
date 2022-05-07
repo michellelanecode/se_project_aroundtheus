@@ -1,4 +1,4 @@
-import {openPopup, closePopup, closePopupWithEscape } from "./utils.js";
+import { openPopup, closePopup, closePopupWithEscape } from "./utils.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import * as constant from "./constants.js";
@@ -33,13 +33,13 @@ function fillProfileForm() {
 }
 
 function closeOpenedPopup() {
-    const openedPopups = document.querySelectorAll('.popup__container_active');
-    openedPopups.forEach(openedPopup => closePopup(openedPopup))
+  const openedPopups = document.querySelectorAll(".popup__container_active");
+  openedPopups.forEach((openedPopup) => closePopup(openedPopup));
 }
 
 function showEdit() {
   constant.name.value = constant.profileName.textContent;
- constant. aboutInfo.value = constant.aboutName.textContent;
+  constant.aboutInfo.value = constant.aboutName.textContent;
   editFormValidator.resetValidation();
   openPopup(constant.editPopup);
 }
@@ -49,40 +49,34 @@ function showAdd() {
   openPopup(constant.addPopup);
 }
 
+constant.profileSubmitForm.addEventListener("submit", updateProfile);
 
-constant.profileSubmitForm.addEventListener('submit', updateProfile);
-
-constant.cardCreateForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const cardInfo = { text: constant.imageTitle.value, link: constant.imageUrl.value }
-    const newCard = createCard(cardInfo, constant.cardSelector)
-    renderCard(newCard);
-    closePopup(constant.addPopup);
-    constant.cardCreateForm.reset();
-})
-
-constant.editButton.addEventListener('click', showEdit)
-
-constant.addButton.addEventListener('click', showAdd);
-
-constant.closeButtons.forEach((button) => {
-    button.addEventListener('click', function(event) {
-        closeOpenedPopup();
-    })
-})
-
-constant.popup.addEventListener('mousedown', function(event) {
-    if (event.target === event.currentTarget) {
-        closeOpenedPopup()
-    }
+constant.cardCreateForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const cardInfo = {
+    text: constant.imageTitle.value,
+    link: constant.imageUrl.value,
+  };
+  const newCard = createCard(cardInfo, constant.cardSelector);
+  renderCard(newCard);
+  closePopup(constant.addPopup);
+  constant.cardCreateForm.reset();
 });
 
-export {
-  createCard,
-  updateProfile,
-  fillProfileForm,
-  showAdd,
-  showEdit,
-  renderCard,
-closeOpenedPopup
-};
+constant.editButton.addEventListener("click", showEdit);
+
+constant.addButton.addEventListener("click", showAdd);
+
+constant.closeButtons.forEach((button) => {
+  button.addEventListener("click", function (event) {
+    closeOpenedPopup();
+  });
+});
+
+constant.popup.addEventListener("mousedown", function (event) {
+  if (event.target === event.currentTarget) {
+    closeOpenedPopup();
+  }
+});
+
+export { closeOpenedPopup };

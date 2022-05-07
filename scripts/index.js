@@ -1,4 +1,4 @@
-import { openPopup, closePopup} from "./utils.js";
+import { openPopup, closePopup } from "./utils.js";
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import * as constant from "./constants.js";
@@ -85,4 +85,4 @@ constant.popup.addEventListener("mousedown", function (event) {
   }
 });
 
-export { closeOpenedPopup, closePopupWithEscape};
+export { closeOpenedPopup, closePopupWithEscape };

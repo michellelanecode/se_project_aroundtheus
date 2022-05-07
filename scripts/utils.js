@@ -1,50 +1,22 @@
 import { Card } from "./Card.js"
-import * as constants from "./constants.js"
+import * as constant from "./constants.js"
 
 function closePopup(popupElement) {
-    popup.classList.remove('popup_active')
+    constant.popup.classList.remove('popup_active')
     popupElement.classList.remove('popup__container_active')
     document.removeEventListener("keydown", closePopupWithEscape)
 }
 
 function openPopup(popupElement) {
-
-        popup.classList.add('popup_active')
+        constant.popup.classList.add('popup_active')
         popupElement.classList.add('popup__container_active')
         document.addEventListener("keydown", closePopupWithEscape)
 }
 
-function closeOpenedPopup() {
-    const openedPopups = document.querySelectorAll('.popup__container_active');
-    openedPopups.forEach(openedPopup => closePopup(openedPopup))
+function closePopupWithEscape(event) {
+  if (event.key === "Escape") {
+    closeOpenedPopup();
+  }
 }
 
-popup.addEventListener('mousedown', function(event) {
-    if (event.target === event.currentTarget) {
-        closeOpenedPopup()
-    }
-});
-
-
-profileSubmitForm.addEventListener('submit', updateProfile);
-
-cardCreateForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const cardInfo = { text: imageTitle.value, link: imageUrl.value }
-    const newCard = createCard(cardInfo, cardSelector)
-    renderCard(newCard);
-    closePopup(addPopup);
-    cardCreateForm.reset();
-})
-
-editButton.addEventListener('click', showEdit)
-
-addButton.addEventListener('click', showAdd);
-
-closeButtons.forEach((button) => {
-    button.addEventListener('click', function(event) {
-        closeOpenedPopup();
-    })
-})
-
-export {closePopup, openPopup, closeOpenedPopup}
+export {closePopup, openPopup, closePopupWithEscape}

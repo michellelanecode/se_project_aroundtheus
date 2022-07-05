@@ -17,9 +17,6 @@ const CardSection = new Section(
   constant.cards
 );
 
-CardSection.renderElement();
-console.log(CardSection);
-
 function createCard(data, selector) {
   const card = new Card(data, selector);
   return card.createCard();

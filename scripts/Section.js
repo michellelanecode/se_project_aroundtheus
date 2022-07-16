@@ -1,21 +1,14 @@
-import { createCard } from './index.js';
+export default class Section {
+  constructor({ items, renderer, classSelector }) {
+    this._itemArray = items;
+    this._renderer = renderer;
+    this._section = document.querySelector(classSelector);
+  }
+  render() {
+    this._itemArray.forEach((item) => this._renderer(item));
+  }
 
-export class Section {
-    constructor({ items, renderer }, selector) {
-        this._items = items;
-        this._renderer = renderer;
-        this._container = selector;
-    }
-
-    renderElement() {
-        //use renderer to render items on the page
-        this._items.forEach(item => {
-            this._renderer(item);
-        })
-    }
-
-    addItem(element) {
-        // take dom element and add it to container
-        this._container.prepend(element);
-    }
+  addItem(element) {
+    this._section.prepend(element);
+  }
 }

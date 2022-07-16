@@ -10,14 +10,14 @@ export const cards = document.querySelector(".cards");
 export const photoPopup = document.querySelector(".popup__image-photo");
 export const photoTitle = document.querySelector(".popup__image-text");
 export const popupImage = document.querySelector(".popup__image");
-export const popup = document.querySelector('.popup');
-export const profileSubmitForm = document.querySelector('.popup__form_type_edit');
-export const cardCreateForm = document.querySelector('.popup__form_type_add');
+export const profileSubmitForm = document.querySelector(
+  ".popup__form_type_edit"
+);
+export const cardCreateForm = document.querySelector(".popup__form_type_add");
 export const editButton = document.querySelector(".profile__buttons-edit");
-export const addButton = document.querySelector('.profile__buttons-add');
-export const closeButtons = document.querySelectorAll('.popup__form-close')
-export const imageTitle = document.querySelector('.popup__input_type_title');
-export const imageUrl = document.querySelector('.popup__input_type_link');
+export const addButton = document.querySelector(".profile__buttons-add");
+export const imageTitle = document.querySelector(".popup__input_type_title");
+export const imageUrl = document.querySelector(".popup__input_type_link");
 export const settings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -53,6 +53,3 @@ export const initialCards = [
     link: "images/disneyworld.jpeg",
   },
 ];
-
-export const cardSelector = "#card";
-

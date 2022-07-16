@@ -1,0 +1,17 @@
+building = bundling a projects files and dependences and connecting
+them to HTML
+
+takes new js code and makes it compatible with all browsers
+stylesheets are minified to increase load time
+vendor prefixes are set automatically so it doesnt
+have to be added to css
+
+bundlers are Gulp, Webpack and Grunt
+
+NPM allows devs to install tools and libaries in their projects easily
+
+libaries and tools are considered dependencies
+
+package.json holds the information about tools and libaries
+
+

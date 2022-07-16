@@ -1,0 +1,22 @@
+{
+  "name": "web_project_4",
+  "version": "1.0.0",
+  "description": "### Overview Hello! This is a web app called Around the U.S. This is the 3rd project created for the software engineering program with Practicum by Yandex.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michellelanecode/web_project_4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michellelanecode/web_project_4/issues"
+  },
+  "homepage": "https://github.com/michellelanecode/web_project_4#readme",
+  "devDependencies": {
+    "webpack": "^5.73.0"
+  }
+}

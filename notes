@@ -9,9 +9,30 @@ have to be added to css
 bundlers are Gulp, Webpack and Grunt
 
 NPM allows devs to install tools and libaries in their projects easily
+can be used to publish, discover, install and create new programs
 
 libaries and tools are considered dependencies
 
 package.json holds the information about tools and libaries
 
+the package-lock json file holds dependency version information so that if someone else
+accesses your project they are sure to download the same dependency.
 
+dev packages have two categories
+
+1. whats needed in final build
+2. packages needed while developing the project
+
+dependecies will be in the final build
+devDependenices will be omitted.
+
+There can be several builds in a project serving a different purpose.
+
+Standard: 2 builds one for development and another for production.
+One for development and One for Production
+
+OldSyntax and vendor prefixes are needed for production build but not dev
+Weback needed for dev build but not production
+
+Scripts are webpack commands
+can run a script but using npm run name of script

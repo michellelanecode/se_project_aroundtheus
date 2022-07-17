@@ -20,7 +20,6 @@ function addNewCard(item) {
   });
   const newCardElement = newCard.createCard();
   cards.addItem(newCardElement);
-  constant.cardCreateForm.reset();
 }
 
 const imagePopup = new PopupWithImage(".popup__image");
@@ -64,19 +63,24 @@ const addFormValidator = new FormValidator(
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
+// profile functionality
+const user = new UserInfo({
+  userNameInput: ".popup__input_type_name",
+  userInfoInput: ".popup__input_type_about",
+});
+
 function updateProfile(event) {
   event.preventDefault();
   fillProfileForm();
 }
 
 function fillProfileForm() {
-  constant.profileName.textContent = constant.name.value;
-  constant.aboutName.textContent = constant.aboutInfo.value;
+  const userInfo = user.getInfo();
+  user.setInfo(userInfo);
 }
 
 function showEdit() {
-  constant.name.value = constant.profileName.textContent;
-  constant.aboutInfo.value = constant.aboutName.textContent;
+  user.setUserInfo(user.getUserInfo());
   editFormValidator.resetValidation();
   editForm.open();
 }

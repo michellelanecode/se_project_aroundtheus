@@ -1,4 +1,4 @@
-export default class Section {
+class Section {
   constructor({ items, renderer, classSelector }) {
     this._itemArray = items;
     this._renderer = renderer;
@@ -9,6 +9,7 @@ export default class Section {
   }
 
   addItem(element) {
+    const card = this._renderer(element);
     this._section.prepend(element);
   }
 }

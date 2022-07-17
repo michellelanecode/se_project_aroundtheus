@@ -27,10 +27,35 @@ function addNewCard(item) {
   cards.addItem(newCardElement);
 }
 
+// profile functionality
+const user = new UserInfo(".profile__title", ".profile__subtitle");
+
+function updateProfile(userInfo) {
+  user.setUserInfo(userInfo);
+}
+
+function fillProfileForm(userInfo) {
+  const currentUser = user.getUserInfo();
+  constant.name.value = currentUser.userNameInput;
+  constant.aboutInfo.value = currentUser.userInfoInput;
+}
+
+function showEdit() {
+  fillProfileForm();
+  editFormValidator.resetValidation();
+  editForm.open();
+}
+
+function showAdd() {
+  addFormValidator.resetValidation();
+  addForm.open();
+}
+
 // popup form functionality
 const editForm = new PopupWithForm({
   popupSelector: ".popup__edit",
   submitFunc: updateProfile,
+  userInfo: user.getUserInfo(),
 });
 editForm.setEventListeners();
 
@@ -51,33 +76,6 @@ const editFormValidator = new FormValidator(constant.settings, editForm);
 const addFormValidator = new FormValidator(constant.settings, addForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
-// profile functionality
-const user = new UserInfo({
-  userNameInput: ".popup__input_type_name",
-  userInfoInput: ".popup__input_type_about",
-});
-
-function updateProfile(event) {
-  event.preventDefault();
-  fillProfileForm();
-}
-
-function fillProfileForm() {
-  const userInfo = user.getInfo();
-  user.setInfo(userInfo);
-}
-
-function showEdit() {
-  user.setUserInfo(user.getUserInfo());
-  editFormValidator.resetValidation();
-  editForm.open();
-}
-
-function showAdd() {
-  addFormValidator.resetValidation();
-  addForm.open();
-}
 
 constant.editButton.addEventListener("click", showEdit);
 constant.addButton.addEventListener("click", showAdd);

@@ -7,7 +7,8 @@ const disneyImage = new URL("../images/disneyworld.jpeg", import.meta.url);
 
 export const editButton = document.querySelector(".profile__buttons-edit");
 export const addButton = document.querySelector(".profile__buttons-add");
-
+export const aboutInfo = document.querySelector(".popup__input_type_about");
+export const name = document.querySelector(".popup__input_type_name");
 export const settings = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",

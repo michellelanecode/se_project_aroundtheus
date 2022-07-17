@@ -21,7 +21,7 @@ cards.render();
 // card functionality
 function addNewCard(item) {
   const newCard = new Card(item, "#card", () => {
-    imagePopup.open(cardInfo);
+    imagePopup.open(item);
   });
   const newCardElement = newCard.createCard();
   cards.addItem(newCardElement);

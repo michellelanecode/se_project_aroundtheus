@@ -8,6 +8,16 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
 
+const imagePopup = new PopupWithImage(".popup__image");
+imagePopup.setEventListeners();
+
+const cards = new Section({
+  items: constant.initialCards,
+  renderer: addNewCard,
+  classSelector: ".cards",
+});
+cards.render();
+
 // card functionality
 function addNewCard(item) {
   const cardInfo = {
@@ -21,16 +31,6 @@ function addNewCard(item) {
   const newCardElement = newCard.createCard();
   cards.addItem(newCardElement);
 }
-
-const imagePopup = new PopupWithImage(".popup__image");
-imagePopup.setEventListeners();
-
-const cards = new Section({
-  items: constant.initialCards,
-  renderer: addNewCard,
-  classSelector: ".cards",
-});
-cards.render();
 
 // popup form functionality
 const editForm = new PopupWithForm({

@@ -28,13 +28,6 @@ class Card {
     evt.target.classList.toggle("card__lovebutton_active");
   }
 
-  _openImagePopup() {
-    photoTitle.textContent = this._text;
-    photoPopup.src = this._link;
-    photoPopup.alt = this._text;
-    openPopup(popupImage);
-  }
-
   _deletePhoto(evt) {
     const elementToRemove = evt.target.closest(".card");
     elementToRemove.remove();

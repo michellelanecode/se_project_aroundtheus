@@ -20,12 +20,7 @@ cards.render();
 
 // card functionality
 function addNewCard(item) {
-  const cardInfo = {
-    text: item.text,
-    link: item.link,
-  };
-
-  const newCard = new Card(cardInfo, "#card", () => {
+  const newCard = new Card(item, "#card", () => {
     imagePopup.open(cardInfo);
   });
   const newCardElement = newCard.createCard();

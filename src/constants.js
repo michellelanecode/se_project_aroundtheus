@@ -1,3 +1,10 @@
+const scrantonImage = new URL("./images/Scranton.jpeg", import.meta.url);
+const siliconVImage = new URL("./images/SiliconValley.png", import.meta.url);
+const pawneeImage = new URL("./images/pawnee.jpeg", import.meta.url);
+const ecorpImage = new URL("./images/ECorp.jpeg", import.meta.url);
+const downtonImage = new URL("./images/Downton.jpeg", import.meta.url);
+const disneyImage = new URL("./images/disneyworld.jpeg", import.meta.url);
+
 export const profileName = document.querySelector(".profile__title");
 export const aboutName = document.querySelector(".profile__subtitle");
 export const aboutInfo = document.querySelector(".popup__input_type_about");
@@ -28,26 +35,26 @@ export const settings = {
 export const initialCards = [
   {
     text: "Scranton",
-    link: "images/Scranton.jpeg",
+    link: scrantonImage,
   },
   {
     text: "Silicon Valley",
-    link: "images/SiliconValley.png",
+    link: siliconVImage,
   },
   {
     text: "E Corp",
-    link: "images/ECorp.jpeg",
+    link: ecorpImage,
   },
   {
     text: "Downton",
-    link: "images/Downton.jpeg",
+    link: downtonImage,
   },
   {
     text: "Pawnee",
-    link: "images/pawnee.jpeg",
+    link: pawneeImage,
   },
   {
     text: "Disney World",
-    link: "images/disneyworld.jpeg",
+    link: disneyImage,
   },
 ];

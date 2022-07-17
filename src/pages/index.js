@@ -61,12 +61,8 @@ editForm.setEventListeners();
 
 const addForm = new PopupWithForm({
   popupSelector: ".popup__add",
-  submitFunc: () => {
-    const newInfo = {
-      text: document.querySelector("#title-input").value,
-      link: document.querySelector("#url-input").value,
-    };
-    addNewCard(newInfo);
+  submitFunc: (cardInfo) => {
+    addNewCard(cardInfo);
   },
 });
 

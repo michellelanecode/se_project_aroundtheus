@@ -1,4 +1,4 @@
-class Section {
+export default class Section {
   constructor({ items, renderer, classSelector }) {
     this._itemArray = items;
     this._renderer = renderer;

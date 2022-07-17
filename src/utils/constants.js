@@ -1,9 +1,9 @@
-const scrantonImage = new URL("./images/Scranton.jpeg", import.meta.url);
-const siliconVImage = new URL("./images/SiliconValley.png", import.meta.url);
-const pawneeImage = new URL("./images/pawnee.jpeg", import.meta.url);
-const ecorpImage = new URL("./images/ECorp.jpeg", import.meta.url);
-const downtonImage = new URL("./images/Downton.jpeg", import.meta.url);
-const disneyImage = new URL("./images/disneyworld.jpeg", import.meta.url);
+const scrantonImage = new URL("../images/Scranton.jpeg", import.meta.url);
+const siliconVImage = new URL("../images/SiliconValley.png", import.meta.url);
+const pawneeImage = new URL("../images/pawnee.jpeg", import.meta.url);
+const ecorpImage = new URL("../images/ECorp.jpeg", import.meta.url);
+const downtonImage = new URL("../images/Downton.jpeg", import.meta.url);
+const disneyImage = new URL("../images/disneyworld.jpeg", import.meta.url);
 
 export const editButton = document.querySelector(".profile__buttons-edit");
 export const addButton = document.querySelector(".profile__buttons-add");

@@ -7,16 +7,36 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
+import Api from "../components/Api.js";
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
+let initialCards = [];
 
-const cards = new Section({
-  items: constant.initialCards,
-  renderer: addNewCard,
-  classSelector: ".cards",
+// profile functionality
+const user = new UserInfo(
+  ".profile__title",
+  ".profile__subtitle",
+  ".profile__photo"
+);
+
+const api = new Api({
+  url: " https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "a62acfc5-af94-4242-902c-c2cf40c0593c",
+    "Content-Type": "application/json",
+  },
 });
-cards.render();
+
+api.getUserInfo().then((res) => {
+  user.setUserInfo(res);
+});
+
+api.getAllCards().then((res) => {
+  res.forEach((resData) => {
+    initialCards.push({ name: resData.name, link: resData.link });
+  });
+});
 
 // card functionality
 function addNewCard(item) {
@@ -24,11 +44,17 @@ function addNewCard(item) {
     imagePopup.open(item);
   });
   const newCardElement = newCard.createCard();
+  console.log(item);
   cards.addItem(newCardElement);
 }
 
-// profile functionality
-const user = new UserInfo(".profile__title", ".profile__subtitle");
+const cards = new Section({
+  items: initialCards,
+  renderer: addNewCard,
+  classSelector: ".cards",
+});
+
+cards.render();
 
 function updateProfile(userInfo) {
   user.setUserInfo(userInfo);

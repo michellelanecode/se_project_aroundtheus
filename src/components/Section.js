@@ -6,14 +6,12 @@ export default class Section {
   }
 
   render() {
-    this._itemArray.map((item) => {
-      this._renderer(item);
-      console.log("Ran");
+    return this._itemArray.map((item) => {
+      return this._renderer(item);
     });
   }
 
   addItem(element) {
-    console.log(this._section);
-    this._section.prepend(element);
+    return this._section.prepend(element);
   }
 }

@@ -34,23 +34,21 @@ api.getUserInfo().then((res) => {
 
 api.getAllCards().then((res) => {
   res.forEach((resData) => {
-    initialCards.push({ name: resData.name, link: resData.link });
+    const cardInfo = { name: resData.name, link: resData.link };
+    const newCard = new Card(cardInfo, "#card", () => {
+      imagePopup.open(item);
+    });
+    const newCardElement = newCard.createCard();
+    const cards = new Section(cardInfo, addNewCard, ".cards");
+    cards.addItem(newCardElement);
   });
 });
 
 // card functionality
 function addNewCard(item) {
-  console.log(item);
-  const newCard = new Card(item, "#card", () => {
-    imagePopup.open(item);
-  });
   const newCardElement = newCard.createCard();
   cards.addItem(newCardElement);
 }
-
-const cards = new Section(initialCards, addNewCard, ".cards");
-
-cards.render();
 
 function updateProfile(userInfo) {
   user.setUserInfo(userInfo);

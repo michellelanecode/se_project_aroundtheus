@@ -51,10 +51,12 @@ function addNewCard(item) {
 }
 
 function updateProfile(userInfo) {
-  user.setUserInfo(userInfo);
+  api.updateUser(userInfo.name, userInfo.about).then((res) => {
+    user.setUserInfo(res);
+  });
 }
 
-function fillProfileForm(userInfo) {
+function fillProfileForm() {
   const currentUser = user.getUserInfo();
   constant.name.value = currentUser.userNameInput;
   constant.aboutInfo.value = currentUser.userInfoInput;

@@ -40,19 +40,15 @@ api.getAllCards().then((res) => {
 
 // card functionality
 function addNewCard(item) {
+  console.log(item);
   const newCard = new Card(item, "#card", () => {
     imagePopup.open(item);
   });
   const newCardElement = newCard.createCard();
-  console.log(item);
   cards.addItem(newCardElement);
 }
 
-const cards = new Section({
-  items: initialCards,
-  renderer: addNewCard,
-  classSelector: ".cards",
-});
+const cards = new Section(initialCards, addNewCard, ".cards");
 
 cards.render();
 

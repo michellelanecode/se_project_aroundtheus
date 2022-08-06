@@ -46,8 +46,9 @@ api.getAllCards().then((res) => {
 
 // card functionality
 function addNewCard(item) {
-  const newCardElement = newCard.createCard();
-  cards.addItem(newCardElement);
+  api.createCard(item.name, item.link).then((res) => {
+    console.log(res);
+  });
 }
 
 function updateProfile(userInfo) {

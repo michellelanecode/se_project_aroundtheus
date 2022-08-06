@@ -15,13 +15,36 @@ export default class Api {
   getUserInfo() {
     return fetch(this._url + "/users/me", {
       headers: this._headers,
-    }).then(this._getResponse);
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   getAllCards() {
     return fetch(this._url + "/cards", {
       headers: this._headers,
-    }).then(this._getResponse);
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  createCard(cardName, link) {
+    return fetch(this._url + "/cards", {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: cardName,
+        about: link,
+      }),
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   updateUser(userName, aboutUser) {
@@ -32,6 +55,10 @@ export default class Api {
         name: userName,
         about: aboutUser,
       }),
-    }).then(this._getResponse);
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }

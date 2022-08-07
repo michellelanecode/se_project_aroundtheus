@@ -40,9 +40,16 @@ api.getAllCards().then((res) => {
 
 function createCard(item) {
   const cardInfo = { name: item.name, link: item.link, likes: item.likes };
-  const newCard = new Card(cardInfo, "#card", () => {
-    imagePopup.open(item);
-  });
+  const newCard = new Card(
+    cardInfo,
+    "#card",
+    () => {
+      imagePopup.open(item);
+    },
+    () => {
+      deleteCardPopup.open();
+    }
+  );
   const newCardElement = newCard.createCard();
   const cards = new Section(cardInfo, addNewCard, ".cards");
   cards.addItem(newCardElement);
@@ -92,6 +99,14 @@ const addForm = new PopupWithForm({
     addNewCard(cardInfo);
   },
 });
+
+function deleteCard(item) {
+  console.log("deleted: " + item);
+}
+
+const deleteCardPopup = new Popup(".popup__delete");
+
+deleteCardPopup.setEventListeners();
 
 addForm.setEventListeners();
 

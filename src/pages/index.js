@@ -39,7 +39,7 @@ api.getAllCards().then((res) => {
 });
 
 function createCard(item) {
-  const cardInfo = { name: item.name, link: item.link };
+  const cardInfo = { name: item.name, link: item.link, likes: item.likes };
   const newCard = new Card(cardInfo, "#card", () => {
     imagePopup.open(item);
   });

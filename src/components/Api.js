@@ -32,13 +32,13 @@ export default class Api {
       });
   }
 
-  createCard(cardName, link) {
+  createCard(cardName, cardLink) {
     return fetch(this._url + "/cards", {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name: cardName,
-        about: link,
+        link: cardLink,
       }),
     })
       .then(this._getResponse)

@@ -34,20 +34,24 @@ api.getUserInfo().then((res) => {
 
 api.getAllCards().then((res) => {
   res.forEach((resData) => {
-    const cardInfo = { name: resData.name, link: resData.link };
-    const newCard = new Card(cardInfo, "#card", () => {
-      imagePopup.open(item);
-    });
-    const newCardElement = newCard.createCard();
-    const cards = new Section(cardInfo, addNewCard, ".cards");
-    cards.addItem(newCardElement);
+    createCard(resData);
   });
 });
 
+function createCard(item) {
+  const cardInfo = { name: item.name, link: item.link };
+  const newCard = new Card(cardInfo, "#card", () => {
+    imagePopup.open(item);
+  });
+  const newCardElement = newCard.createCard();
+  const cards = new Section(cardInfo, addNewCard, ".cards");
+  cards.addItem(newCardElement);
+}
+
 // card functionality
 function addNewCard(item) {
-  api.createCard(item.name, item.link).then((res) => {
-    console.log(res);
+  api.createCard(item.text, item.link).then((res) => {
+    createCard(res);
   });
 }
 

@@ -13,11 +13,16 @@ export default class UserInfo {
     };
   }
 
+  getId() {
+    return this._userId;
+  }
+
   setUserInfo(userInfo) {
     this._userName.textContent = userInfo.name;
     this._userInfo.textContent = userInfo.about;
     this._userAvatar.src = userInfo.avatar;
     this._userAvatar.alt = userInfo.name;
+    this._userId = userInfo._id;
   }
 
   changeAvatar(imageUrl) {

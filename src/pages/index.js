@@ -11,7 +11,6 @@ import Api from "../components/Api.js";
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
-let initialCards = [];
 
 // profile functionality
 const user = new UserInfo(
@@ -39,7 +38,12 @@ api.getAllCards().then((res) => {
 });
 
 function createCard(item) {
-  const cardInfo = { name: item.name, link: item.link, likes: item.likes };
+  const cardInfo = {
+    name: item.name,
+    link: item.link,
+    likes: item.likes,
+    id: item.owner._id,
+  };
   const newCard = new Card(
     cardInfo,
     "#card",
@@ -48,7 +52,8 @@ function createCard(item) {
     },
     () => {
       deleteCardPopup.open();
-    }
+    },
+    user.getId()
   );
   const newCardElement = newCard.createCard();
   const cards = new Section(cardInfo, addNewCard, ".cards");
@@ -58,6 +63,7 @@ function createCard(item) {
 // card functionality
 function addNewCard(item) {
   api.createCard(item.text, item.link).then((res) => {
+    console.log(res);
     createCard(res);
   });
 }

@@ -47,6 +47,39 @@ export default class Api {
       });
   }
 
+  addLike(cardId) {
+    return fetch(this._url + "/cards/likes/" + cardId, {
+      method: "PUT",
+      headers: this._headers,
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  removeLike(cardId) {
+    return fetch(this._url + "/cards/likes/" + cardId, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  deleteCard(cardId) {
+    return fetch(this._url + "/cards/" + cardId, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   updateUser(userName, aboutUser) {
     return fetch(this._url + "/users/me", {
       method: "PATCH",

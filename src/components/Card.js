@@ -1,10 +1,20 @@
 export default class Card {
-  constructor(data, cardSelector, handleClick, handleDeleteClick, userId) {
+  constructor(
+    data,
+    cardSelector,
+    handleClick,
+    handleDeleteClick,
+    userId,
+    updateLikeButton
+  ) {
+    this._likes = data.likes;
     this._userId = userId;
+    this._cardOwnerId = data.cardOwner;
     this._cardId = data.id;
     this._text = data.name;
     this._link = data.link;
     this._likeCount = data.likes.length;
+    this._updateLikeButton = updateLikeButton.bind(this);
     this._handleClick = handleClick;
     this._handleDeleteClick = handleDeleteClick;
     this._cardSelector = cardSelector;
@@ -16,9 +26,8 @@ export default class Card {
 
   _setEventListeners() {
     this._likeButton.addEventListener("click", (evt) => {
-      this._updateLikeButton(evt);
+      this._updateLikeButton(evt, this._cardId);
     });
-
     this._cardImage.addEventListener("click", this._handleClick);
   }
 
@@ -26,13 +35,17 @@ export default class Card {
     return document.querySelector(this._cardSelector).content;
   }
 
-  _updateLikeButton(evt) {
-    evt.target.classList.toggle("card__lovebutton_active");
+  updateLikeCount(likeCount) {
+    this._likeCount = likeCount;
+    this._cardLikeCount.textContent = likeCount;
   }
 
-  _deletePhoto(evt) {
-    const elementToRemove = evt.target.closest(".card");
-    elementToRemove.remove();
+  _checkForLikes() {
+    this._likes.forEach((like) => {
+      if (like._id === this._userId) {
+        this._likeButton.classList.toggle("card__lovebutton_active");
+      }
+    });
   }
 
   _addDeleteIcon() {
@@ -46,13 +59,15 @@ export default class Card {
   }
 
   createCard() {
-    if (this._cardId === this._userId) {
+    if (this._cardOwnerId === this._userId) {
       this._addDeleteIcon();
     }
+    this._checkForLikes();
     this._cardImage.src = this._link;
     this._cardImage.alt = this._text;
     this._cardLikeCount.textContent = this._likeCount;
     this._cardElement.querySelector(".card__caption").textContent = this._text;
+    this._cardImage.id = this._cardId;
     this._setEventListeners();
     return this._cardElement;
   }

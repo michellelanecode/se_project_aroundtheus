@@ -4,6 +4,7 @@ import Card from "../components/Card.js";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithSubmit from "../components/PopupWithSubmit.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
@@ -37,12 +38,28 @@ api.getAllCards().then((res) => {
   });
 });
 
+function updateLikeButton(evt, cardId) {
+  evt.target.classList.toggle("card__lovebutton_active");
+  if (!evt.target.classList.contains("card__lovebutton_active")) {
+    api.removeLike(cardId).then((res) => {
+      this.updateLikeCount(res.likes.length);
+    });
+  } else {
+    api.addLike(cardId).then((res) => {
+      this.updateLikeCount(res.likes.length);
+    });
+  }
+}
+
+function toggleCount() {}
+
 function createCard(item) {
   const cardInfo = {
     name: item.name,
     link: item.link,
     likes: item.likes,
-    id: item.owner._id,
+    id: item._id,
+    cardOwner: item.owner._id,
   };
   const newCard = new Card(
     cardInfo,
@@ -51,9 +68,10 @@ function createCard(item) {
       imagePopup.open(item);
     },
     () => {
-      deleteCardPopup.open();
+      deleteCardPopup.open(item);
     },
-    user.getId()
+    user.getId(),
+    updateLikeButton
   );
   const newCardElement = newCard.createCard();
   const cards = new Section(cardInfo, addNewCard, ".cards");
@@ -63,7 +81,6 @@ function createCard(item) {
 // card functionality
 function addNewCard(item) {
   api.createCard(item.text, item.link).then((res) => {
-    console.log(res);
     createCard(res);
   });
 }
@@ -106,11 +123,11 @@ const addForm = new PopupWithForm({
   },
 });
 
-function deleteCard(item) {
-  console.log("deleted: " + item);
+function deleteCard(card) {
+  api.deleteCard(card._id);
 }
 
-const deleteCardPopup = new Popup(".popup__delete");
+const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
 
 deleteCardPopup.setEventListeners();
 

@@ -22,7 +22,7 @@
             <img class="profile-pic__image profile__photo" />
             <div class="profile-pic__content">
               <span class="profile-pic__icon"
-                ><img class="profile__photo-icon profile__photo"
+                ><img class="profile__photo-icon"
               /></span>
             </div>
           </div>
@@ -57,11 +57,36 @@
     <div class="popup">
       <div class="popup__delete">
         <div class="popup__container">
-          <div class="popup__delete-verification popup__form">
+          <div class="popup__delete-verification">
             <h3 class="popup__delete-header">Are you sure?</h3>
             <button class="popup__button" type="submit">Yes</button>
             <button class="popup__form-close"></button>
           </div>
+        </div>
+      </div>
+
+      <div class="popup__update">
+        <div class="popup__container">
+          <form
+            class="popup__form popup__form_type_update"
+            name="addForm"
+            novalidate
+          >
+            <h3 class="popup__header">Change profile photo</h3>
+            <input
+              id="avatar-url"
+              name="link"
+              type="url"
+              placeholder="Image URL"
+              class="popup__input popup__input_type_updateLink"
+              required
+            />
+            <span class="popup__error avatar-url-error"
+              >Please add valid input</span
+            >
+            <button class="popup__button" type="submit">Create</button>
+          </form>
+          <button class="popup__form-close"></button>
         </div>
       </div>
 

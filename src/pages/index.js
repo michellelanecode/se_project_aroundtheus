@@ -94,6 +94,28 @@ function fillProfileForm() {
   constant.aboutInfo.value = currentUser.userInfoInput;
 }
 
+// popup form functionality
+const addForm = new PopupWithForm({
+  popupSelector: ".popup__add",
+  submitFunc: (cardInfo) => {
+    addNewCard(cardInfo);
+  },
+});
+addForm.setEventListeners();
+
+const editForm = new PopupWithForm({
+  popupSelector: ".popup__edit",
+  submitFunc: updateProfile,
+  userInfo: user.getUserInfo(),
+});
+editForm.setEventListeners();
+
+const updateForm = new PopupWithForm({
+  popupSelector: ".popup__update",
+  submitFunc: updateProfilePhoto,
+});
+updateForm.setEventListeners();
+
 function showEdit() {
   fillProfileForm();
   editFormValidator.resetValidation();
@@ -105,35 +127,40 @@ function showAdd() {
   addForm.open();
 }
 
-// popup form functionality
-const editForm = new PopupWithForm({
-  popupSelector: ".popup__edit",
-  submitFunc: updateProfile,
-  userInfo: user.getUserInfo(),
-});
-editForm.setEventListeners();
+function updateProfilePhoto() {
+  api.updateProfilePhoto(constant.avatarUrl.value).then((res) => {
+    user.setUserInfo(res);
+  });
+}
 
-const addForm = new PopupWithForm({
-  popupSelector: ".popup__add",
-  submitFunc: (cardInfo) => {
-    addNewCard(cardInfo);
-  },
-});
+function fillUpdate(userInfo) {
+  const currentUser = user.getUserInfo();
+  constant.avatarUrl.value = userInfo.avatar;
+}
 
+function showUpdate() {
+  api.getUserInfo().then((res) => {
+    fillUpdate(res);
+    updateFormValidator.resetValidation();
+  });
+  updateForm.open();
+}
+
+const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
+deleteCardPopup.setEventListeners();
 function deleteCard(card) {
   api.deleteCard(card._id);
 }
 
-const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
-
-deleteCardPopup.setEventListeners();
-
-addForm.setEventListeners();
-
 const editFormValidator = new FormValidator(constant.settings, editForm);
 const addFormValidator = new FormValidator(constant.settings, addForm);
+const updateFormValidator = new FormValidator(constant.settings, updateForm);
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+updateFormValidator.enableValidation();
+
 constant.profilePhotoIcon.src = constant.iconImage;
+constant.profilePhotoIcon.addEventListener("click", showUpdate);
 constant.editButton.addEventListener("click", showEdit);
 constant.addButton.addEventListener("click", showAdd);

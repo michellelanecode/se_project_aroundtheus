@@ -9,7 +9,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
 import Api from "../components/Api.js";
-
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
 
@@ -50,8 +49,6 @@ function updateLikeButton(evt, cardId) {
     });
   }
 }
-
-function toggleCount() {}
 
 function createCard(item) {
   const cardInfo = {
@@ -137,6 +134,6 @@ const editFormValidator = new FormValidator(constant.settings, editForm);
 const addFormValidator = new FormValidator(constant.settings, addForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-
+constant.profilePhotoIcon.src = constant.iconImage;
 constant.editButton.addEventListener("click", showEdit);
 constant.addButton.addEventListener("click", showAdd);

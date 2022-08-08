@@ -1,0 +1,26 @@
+.profile-pic {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.profile-pic:hover .profile-pic__content {
+  opacity: 1;
+}
+
+.profile-pic:hover .profile-pic__image {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 975px) {
+  .profile-pic__image {
+    margin: 0;
+    margin-bottom: 26px;
+    text-align: center;
+    align-self: center;
+    grid-area: photo;
+  }
+}

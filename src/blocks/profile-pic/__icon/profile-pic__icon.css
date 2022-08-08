@@ -1,0 +1,11 @@
+.profile-pic__icon {
+  color: white;
+  padding-bottom: 8px;
+  width: 26px;
+  height: 26px;
+}
+
+.profile__photo-icon {
+  max-width: 30px;
+  max-height: 30px;
+}

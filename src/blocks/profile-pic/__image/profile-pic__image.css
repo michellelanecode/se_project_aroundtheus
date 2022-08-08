@@ -1,0 +1,5 @@
+.profile-pic__image {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}

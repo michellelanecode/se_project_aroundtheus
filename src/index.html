@@ -18,11 +18,14 @@
     <main>
       <section class="profile">
         <div class="profile__info">
-          <img
-            class="profile__photo"
-            src="<%= require('./images/MichaelScott.png')%>"
-            alt="picture of actor Steve Carrell as character Michael Scott"
-          />
+          <div class="profile-pic">
+            <img class="profile-pic__image profile__photo" />
+            <div class="profile-pic__content">
+              <span class="profile-pic__icon"
+                ><img class="profile__photo-icon profile__photo"
+              /></span>
+            </div>
+          </div>
           <div class="profile__edit">
             <h1 class="profile__title">Michael G. Scott</h1>
             <button class="profile__buttons-edit" type="button"></button>
@@ -54,11 +57,11 @@
     <div class="popup">
       <div class="popup__delete">
         <div class="popup__container">
-          <form class="popup__delete-verification popup__form">
+          <div class="popup__delete-verification popup__form">
             <h3 class="popup__delete-header">Are you sure?</h3>
             <button class="popup__button" type="submit">Yes</button>
             <button class="popup__form-close"></button>
-          </form>
+          </div>
         </div>
       </div>
 

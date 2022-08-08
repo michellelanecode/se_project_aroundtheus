@@ -22,6 +22,20 @@ export default class Api {
       });
   }
 
+  updateProfilePhoto(avatarLink) {
+    return fetch(this._url + "/cards", {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatarLink,
+      }),
+    })
+      .then(this._getResponse)
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   getAllCards() {
     return fetch(this._url + "/cards", {
       headers: this._headers,

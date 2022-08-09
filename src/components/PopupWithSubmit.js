@@ -10,13 +10,14 @@ export default class PopupWithSubmit extends Popup {
     super.setEventListeners();
     this._popupElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitFunc(this._cardToRemoveId, evt);
+      this._submitFunc(this._cardToRemoveId, this.cardToDeleteNode);
       this.close();
     });
   }
 
-  open(item) {
+  open(item, evt) {
     super.open();
     this._cardToRemoveId = item;
+    this.cardToDeleteNode = evt;
   }
 }

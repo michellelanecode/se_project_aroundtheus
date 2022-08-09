@@ -66,8 +66,8 @@ function createCard(item) {
     () => {
       imagePopup.open(item);
     },
-    () => {
-      deleteCardPopup.open(item);
+    (evt) => {
+      deleteCardPopup.open(item, evt);
     },
     user.getId(),
     updateLikeButton
@@ -150,8 +150,8 @@ function showUpdate() {
 
 const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
 deleteCardPopup.setEventListeners();
-function deleteCard(card) {
-  api.deleteCard(card._id);
+function deleteCard(card, evt) {
+  api.deleteCard(card._id).then((res) => evt.parentNode.remove());
 }
 
 const editFormValidator = new FormValidator(constant.settings, editForm);

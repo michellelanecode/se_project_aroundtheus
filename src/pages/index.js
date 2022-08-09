@@ -9,6 +9,8 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
 import Api from "../components/Api.js";
+import Loading from "../components/Loading.js";
+
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
 

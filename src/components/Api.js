@@ -2,7 +2,6 @@ export default class Api {
   constructor(info) {
     this._url = info.url;
     this._headers = info.headers;
-    this._displayLoadingButton = document.querySelector(".popup__button");
   }
 
   _getResponse(res) {
@@ -11,18 +10,6 @@ export default class Api {
     } else {
       return "Error! Status " + res.status + " " + res.statusText;
     }
-  }
-
-  _displayLoading() {
-    console.log(this._displayLoadingButton);
-    this._loadingPreviousValue = this._displayLoadingButton.textContent;
-    this._displayLoadingButton.textContent = "Saving...";
-    console.log(this._loadingPreviousValue);
-  }
-
-  _hideLoading() {
-    console.log(this._displayLoadingButton, this._loadingPreviousValue);
-    this._displayLoadingButton.textContent = this._loadingPreviousValue;
   }
 
   getUserInfo() {
@@ -36,7 +23,6 @@ export default class Api {
   }
 
   updateProfilePhoto(avatarLink) {
-    this._displayLoading();
     return fetch(this._url + "/users/me/avatar", {
       method: "PATCH",
       headers: this._headers,
@@ -45,9 +31,6 @@ export default class Api {
       }),
     })
       .then(this._getResponse)
-      .then(() => {
-        this._hideLoading();
-      })
       .catch((err) => {
         console.log(err);
       });

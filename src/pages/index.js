@@ -151,7 +151,7 @@ const updateForm = new PopupWithForm({
 updateForm.setEventListeners();
 
 function showUpdate() {
-  updateForm.resetValidation;
+  updateFormValidator.resetValidation();
   updateForm.open();
 }
 

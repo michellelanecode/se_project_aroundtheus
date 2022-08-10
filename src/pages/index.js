@@ -12,7 +12,7 @@ import Api from "../components/Api.js";
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
-const profileCardSection = document.querySelector(".cards");
+const cardSection = new Section([], initialCardRender, ".cards");
 
 // profile functionality
 const user = new UserInfo(
@@ -35,9 +35,10 @@ Promise.all([api.getUserInfo(), api.getAllCards()])
   // destructure the response
   .then(([userData, cards]) => {
     user.setUserInfo(userData);
-    const newCards = cards.map(createNewCard);
-    const cardSection = new Section(newCards, initialCardRender, ".cards");
-    cardSection.render();
+    cards.map((card) => {
+      const newCard = createNewCard(card);
+      cardSection.addItem(newCard.createCard());
+    });
   })
   .catch((err) => {
     console.log(err);
@@ -58,7 +59,7 @@ function updateLikeButton(card) {
   api
     .likeCard(card.getCardId(), method)
     .then((res) => {
-      this.updateLikes(res.likes.length);
+      card.updateLikes(res.likes.length);
     })
     .catch((err) => {
       console.log(err);
@@ -86,9 +87,10 @@ function addNewCard(popup, item) {
     .createCard(item.text, item.link)
     .then((res) => {
       const newCard = createNewCard(res);
-      profileCardSection.prepend(newCard.createCard());
+      cardSection.addItem(newCard.createCard());
     })
-    .then(() => {
+    .catch((err) => console.log(err))
+    .finally(() => {
       addForm.close();
       popup.renderLoading(false);
     });
@@ -119,18 +121,19 @@ function showEdit() {
   editForm.open();
 }
 
-function updateProfile(userInfo) {
+function updateProfile(section, userInfo) {
   editForm.renderLoading(true);
+
   api
     .updateUser(userInfo.name, userInfo.about)
     .then((res) => {
       user.setUserInfo(res);
     })
-    .then(() => {
+    .catch((err) => console.log(err))
+    .finally(() => {
       editForm.close();
       editForm.renderLoading(false);
-    })
-    .catch((err) => console.log(err));
+    });
 }
 
 function fillProfileForm() {
@@ -147,18 +150,23 @@ const updateForm = new PopupWithForm({
 });
 updateForm.setEventListeners();
 
-function updateProfilePhoto(link) {
+function showUpdate() {
+  updateForm.resetValidation;
+  updateForm.open();
+}
+
+function updateProfilePhoto(section, link) {
   updateForm.renderLoading(true);
   api
     .updateProfilePhoto(link.link)
     .then((res) => {
       user.setUserInfo(res);
     })
-    .then(() => {
+    .catch((err) => console.log(err))
+    .finally(() => {
       updateForm.close();
       updateForm.renderLoading(false);
-    })
-    .catch((err) => console.log(err));
+    });
 }
 
 const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
@@ -172,8 +180,8 @@ function deleteCard(card) {
   api
     .deleteCard(card.getCardId())
     .then((res) => card.deleteCard())
-    .then(() => deleteCardPopup.close())
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => deleteCardPopup.close());
 }
 
 const editFormValidator = new FormValidator(constant.settings, editForm);
@@ -185,8 +193,6 @@ addFormValidator.enableValidation();
 updateFormValidator.enableValidation();
 
 constant.profilePhotoIcon.src = constant.iconImage;
-constant.profilePhotoIcon.addEventListener("click", () => {
-  updateForm.open();
-});
+constant.profilePhotoIcon.addEventListener("click", showUpdate);
 constant.editButton.addEventListener("click", showEdit);
 constant.addButton.addEventListener("click", showAdd);

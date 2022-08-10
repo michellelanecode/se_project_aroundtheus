@@ -4,7 +4,6 @@ export default class PopupWithSubmit extends Popup {
   constructor(popupSelector, submitFunc) {
     super(popupSelector);
     this._submitFunc = submitFunc;
-    this._submitButtonText = this._submitButton.textContent;
   }
 
   setEventListeners() {

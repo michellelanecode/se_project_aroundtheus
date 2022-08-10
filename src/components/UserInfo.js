@@ -24,8 +24,4 @@ export default class UserInfo {
     this._userAvatar.alt = userInfo.name;
     this._userId = userInfo._id;
   }
-
-  changeAvatar(imageUrl) {
-    this._avatar.src = imageUrl;
-  }
 }

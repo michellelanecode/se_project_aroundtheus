@@ -13,6 +13,7 @@ import Api from "../components/Api.js";
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
 const profileCardSection = document.querySelector(".cards");
+
 // profile functionality
 const user = new UserInfo(
   ".profile__title",

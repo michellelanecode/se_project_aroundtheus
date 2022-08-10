@@ -6,10 +6,6 @@ const downtonImage = new URL("../images/Downton.jpeg", import.meta.url);
 const disneyImage = new URL("../images/disneyworld.jpeg", import.meta.url);
 export const iconImage = new URL("../images/editIcon.png", import.meta.url);
 export const profilePhotoIcon = document.querySelector(".profile__photo-icon");
-export const avatarUrl = document.querySelector(
-  ".popup__input_type_updateLink"
-);
-
 export const editButton = document.querySelector(".profile__buttons-edit");
 export const addButton = document.querySelector(".profile__buttons-add");
 export const aboutInfo = document.querySelector(".popup__input_type_about");

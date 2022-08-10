@@ -88,10 +88,10 @@ function addNewCard(popup, item) {
     .then((res) => {
       const newCard = createNewCard(res);
       cardSection.addItem(newCard.createCard());
+      addForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      addForm.close();
       popup.renderLoading(false);
     });
 }
@@ -128,10 +128,10 @@ function updateProfile(section, userInfo) {
     .updateUser(userInfo.name, userInfo.about)
     .then((res) => {
       user.setUserInfo(res);
+      editForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      editForm.close();
       editForm.renderLoading(false);
     });
 }
@@ -161,10 +161,10 @@ function updateProfilePhoto(section, link) {
     .updateProfilePhoto(link.link)
     .then((res) => {
       user.setUserInfo(res);
+      updateForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      updateForm.close();
       updateForm.renderLoading(false);
     });
 }
@@ -179,9 +179,11 @@ function getCardToDelete(card) {
 function deleteCard(card) {
   api
     .deleteCard(card.getCardId())
-    .then((res) => card.deleteCard())
-    .catch((err) => console.log(err))
-    .finally(() => deleteCardPopup.close());
+    .then((res) => {
+      card.deleteCard();
+      deleteCardPopup.close();
+    })
+    .catch((err) => console.log(err));
 }
 
 const editFormValidator = new FormValidator(constant.settings, editForm);

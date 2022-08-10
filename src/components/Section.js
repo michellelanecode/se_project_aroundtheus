@@ -7,11 +7,15 @@ export default class Section {
 
   render() {
     return this._itemArray.map((item) => {
-      return this._renderer(item);
+      return this._renderer(this, item);
     });
   }
 
   addItem(element) {
     return this._section.prepend(element);
+  }
+
+  removeItem(element) {
+    this._section.removeChild(element);
   }
 }

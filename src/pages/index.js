@@ -9,11 +9,10 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constant from "../utils/constants.js";
 import Api from "../components/Api.js";
-import Loading from "../components/Loading.js";
 
 const imagePopup = new PopupWithImage(".popup__image");
 imagePopup.setEventListeners();
-
+const profileCardSection = document.querySelector(".cards");
 // profile functionality
 const user = new UserInfo(
   ".profile__title",
@@ -29,65 +28,108 @@ const api = new Api({
   },
 });
 
-api.getUserInfo().then((res) => {
-  user.setUserInfo(res);
-});
+//initalize profile and cards
 
-api.getAllCards().then((res) => {
-  res.forEach((resData) => {
-    createCard(resData);
+Promise.all([api.getUserInfo(), api.getAllCards()])
+  // destructure the response
+  .then(([userData, cards]) => {
+    user.setUserInfo(userData);
+    const newCards = cards.map(createNewCard);
+    const cardSection = new Section(newCards, initialCardRender, ".cards");
+    cardSection.render();
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});
 
-function updateLikeButton(evt, cardId) {
-  evt.target.classList.toggle("card__lovebutton_active");
-  if (!evt.target.classList.contains("card__lovebutton_active")) {
-    api.removeLike(cardId).then((res) => {
-      this.updateLikeCount(res.likes.length);
-    });
-  } else {
-    api.addLike(cardId).then((res) => {
-      this.updateLikeCount(res.likes.length);
-    });
-  }
+function initialCardRender(section, item) {
+  item = item.createCard();
+  section.addItem(item);
 }
 
-function createCard(item) {
-  const cardInfo = {
-    name: item.name,
-    link: item.link,
-    likes: item.likes,
-    id: item._id,
-    cardOwner: item.owner._id,
-  };
+//likebutton functionality
+
+function updateLikeButton(card) {
+  let method = "PUT";
+  if (card.likeStatus) {
+    method = "DELETE";
+  }
+  api
+    .likeCard(card.getCardId(), method)
+    .then((res) => {
+      this.updateLikes(res.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function createNewCard(item) {
   const newCard = new Card(
-    cardInfo,
+    item,
     "#card",
     () => {
       imagePopup.open(item);
     },
-    (evt) => {
-      deleteCardPopup.open(item, evt);
-    },
+    getCardToDelete,
     user.getId(),
     updateLikeButton
   );
-  const newCardElement = newCard.createCard();
-  const cards = new Section(cardInfo, addNewCard, ".cards");
-  cards.addItem(newCardElement);
+  return newCard;
 }
 
 // card functionality
-function addNewCard(item) {
-  api.createCard(item.text, item.link).then((res) => {
-    createCard(res);
-  });
+function addNewCard(popup, item) {
+  popup.renderLoading(true);
+  api
+    .createCard(item.text, item.link)
+    .then((res) => {
+      const newCard = createNewCard(res);
+      profileCardSection.prepend(newCard.createCard());
+    })
+    .then(() => {
+      addForm.close();
+      popup.renderLoading(false);
+    });
+}
+
+// add card form functionality
+const addForm = new PopupWithForm({
+  popupSelector: ".popup__add",
+  submitFunc: addNewCard,
+});
+addForm.setEventListeners();
+
+function showAdd() {
+  addFormValidator.resetValidation();
+  addForm.open();
+}
+
+//edit profile functionality
+const editForm = new PopupWithForm({
+  popupSelector: ".popup__edit",
+  submitFunc: updateProfile,
+});
+editForm.setEventListeners();
+
+function showEdit() {
+  fillProfileForm();
+  editFormValidator.resetValidation();
+  editForm.open();
 }
 
 function updateProfile(userInfo) {
-  api.updateUser(userInfo.name, userInfo.about).then((res) => {
-    user.setUserInfo(res);
-  });
+  editForm.renderLoading(true);
+  api
+    .updateUser(userInfo.name, userInfo.about)
+    .then((res) => {
+      user.setUserInfo(res);
+    })
+    .then(() => {
+      editForm.close();
+      editForm.renderLoading(false);
+    })
+    .catch((err) => console.log(err));
 }
 
 function fillProfileForm() {
@@ -96,21 +138,7 @@ function fillProfileForm() {
   constant.aboutInfo.value = currentUser.userInfoInput;
 }
 
-// popup form functionality
-const addForm = new PopupWithForm({
-  popupSelector: ".popup__add",
-  submitFunc: (cardInfo) => {
-    addNewCard(cardInfo);
-  },
-});
-addForm.setEventListeners();
-
-const editForm = new PopupWithForm({
-  popupSelector: ".popup__edit",
-  submitFunc: updateProfile,
-  userInfo: user.getUserInfo(),
-});
-editForm.setEventListeners();
+// update avatar functionality
 
 const updateForm = new PopupWithForm({
   popupSelector: ".popup__update",
@@ -118,40 +146,33 @@ const updateForm = new PopupWithForm({
 });
 updateForm.setEventListeners();
 
-function showEdit() {
-  fillProfileForm();
-  editFormValidator.resetValidation();
-  editForm.open();
-}
-
-function showAdd() {
-  addFormValidator.resetValidation();
-  addForm.open();
-}
-
-function updateProfilePhoto() {
-  api.updateProfilePhoto(constant.avatarUrl.value).then((res) => {
-    user.setUserInfo(res);
-  });
-}
-
-function fillUpdate(userInfo) {
-  const currentUser = user.getUserInfo();
-  constant.avatarUrl.value = userInfo.avatar;
-}
-
-function showUpdate() {
-  api.getUserInfo().then((res) => {
-    fillUpdate(res);
-    updateFormValidator.resetValidation();
-  });
-  updateForm.open();
+function updateProfilePhoto(link) {
+  updateForm.renderLoading(true);
+  api
+    .updateProfilePhoto(link.link)
+    .then((res) => {
+      user.setUserInfo(res);
+    })
+    .then(() => {
+      updateForm.close();
+      updateForm.renderLoading(false);
+    })
+    .catch((err) => console.log(err));
 }
 
 const deleteCardPopup = new PopupWithSubmit(".popup__delete", deleteCard);
 deleteCardPopup.setEventListeners();
-function deleteCard(card, evt) {
-  api.deleteCard(card._id).then((res) => evt.parentNode.remove());
+
+function getCardToDelete(card) {
+  deleteCardPopup.open(card);
+}
+
+function deleteCard(card) {
+  api
+    .deleteCard(card.getCardId())
+    .then((res) => card.deleteCard())
+    .then(() => deleteCardPopup.close())
+    .catch((err) => console.log(err));
 }
 
 const editFormValidator = new FormValidator(constant.settings, editForm);
@@ -163,6 +184,8 @@ addFormValidator.enableValidation();
 updateFormValidator.enableValidation();
 
 constant.profilePhotoIcon.src = constant.iconImage;
-constant.profilePhotoIcon.addEventListener("click", showUpdate);
+constant.profilePhotoIcon.addEventListener("click", () => {
+  updateForm.open();
+});
 constant.editButton.addEventListener("click", showEdit);
 constant.addButton.addEventListener("click", showAdd);

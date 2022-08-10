@@ -8,18 +8,14 @@ export default class Api {
     if (res.ok) {
       return res.json();
     } else {
-      return "Error! Status " + res.status + " " + res.statusText;
+      return Promise.reject(`Error ${res.status}`);
     }
   }
 
   getUserInfo() {
     return fetch(this._url + "/users/me", {
       headers: this._headers,
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
   updateProfilePhoto(avatarLink) {
@@ -29,21 +25,13 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarLink,
       }),
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
   getAllCards() {
     return fetch(this._url + "/cards", {
       headers: this._headers,
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
   createCard(cardName, cardLink) {
@@ -54,44 +42,21 @@ export default class Api {
         name: cardName,
         link: cardLink,
       }),
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
-  addLike(cardId) {
+  likeCard(cardId, methodType) {
     return fetch(this._url + "/cards/likes/" + cardId, {
-      method: "PUT",
+      method: methodType,
       headers: this._headers,
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  removeLike(cardId) {
-    return fetch(this._url + "/cards/likes/" + cardId, {
-      method: "DELETE",
-      headers: this._headers,
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
   deleteCard(cardId) {
     return fetch(this._url + "/cards/" + cardId, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 
   updateUser(userName, aboutUser) {
@@ -102,10 +67,6 @@ export default class Api {
         name: userName,
         about: aboutUser,
       }),
-    })
-      .then(this._getResponse)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(this._getResponse);
   }
 }

@@ -5,6 +5,7 @@ export default class Popup {
     this._handleClickEvent = this._handleOutsideClick.bind(this);
     this._handleEsc = this._handleEscClose.bind(this);
     this._overlay = document.querySelector(".popup");
+    this._submitButton = this._popupElement.querySelector(".popup__button");
   }
 
   open() {
@@ -30,6 +31,14 @@ export default class Popup {
   _handleOutsideClick(event) {
     if (event.target.classList.contains("popup_active")) {
       this.close();
+    }
+  }
+
+  renderLoading(isLoading, loadingText = "Saving...") {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
     }
   }
 
